@@ -619,7 +619,7 @@ docs = ["sphinx (>=3.5.4,<4.0.0)", "sphinx-rtd-theme (>=0.5.2,<0.6.0)", "sphinx-
 type = "git"
 url = "https://gitlab.com/meltano/sdk.git"
 reference = "257-create-a-stream-map-connector-for-use-in-composable-pipeline"
-resolved_reference = "47e5c4b91befea3f4892de8e6d1ab57b6d635f6d"
+resolved_reference = "90a1c2d3d67b84fc34841794ff479646f117e077"
 
 [[package]]
 name = "six"
