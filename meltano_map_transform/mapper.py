@@ -138,7 +138,7 @@ class StreamTransform(InlineMapper):
             message_dict: An ACTIVATE_VERSION message JSON dictionary.
 
         Returns:
-            The same state message
+            The same ACTIVATE_VERSION message
         """
         return [
             singer.ActivateVersionMessage(
