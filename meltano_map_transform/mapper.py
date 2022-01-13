@@ -132,7 +132,7 @@ class StreamTransform(InlineMapper):
         return [singer.StateMessage(value=message_dict["value"])]
 
     def map_activate_version_message(self, message_dict: dict) -> List[singer.Message]:
-        """Do nothing to the message.
+        """Duplicate the message or alias the stream name as defined in the stream maps definition.
 
         Args:
             message_dict: An ACTIVATE_VERSION message JSON dictionary.
