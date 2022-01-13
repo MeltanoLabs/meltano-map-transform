@@ -131,18 +131,23 @@ class StreamTransform(InlineMapper):
         """
         return [singer.StateMessage(value=message_dict["value"])]
 
-    def map_activate_version_message(self, message_dict: dict) -> List[singer.Message]:
-        """Duplicate the message or alias the stream name as defined in the stream maps definition.
+    def map_activate_version_message(
+        self,
+        message_dict: dict,
+    ) -> Generator[singer.Message, None, None]:
+        """Duplicate the message or alias the stream name as defined in configuration.
 
         Args:
             message_dict: An ACTIVATE_VERSION message JSON dictionary.
 
-        Returns:
-            The same ACTIVATE_VERSION message
+        Yields:
+            An ACTIVATE_VERSION for each duplicated or aliased stream.
         """
-        return [
-            singer.ActivateVersionMessage(
-                stream=message_dict["stream"],
+        self._assert_line_requires(message_dict, requires={"stream", "version"})
+
+        stream_id: str = message_dict["stream"]
+        for stream_map in self.mapper.stream_maps[stream_id]:
+            yield singer.ActivateVersionMessage(
+                stream=stream_map.stream_alias,
                 version=message_dict["version"],
             )
-        ]
