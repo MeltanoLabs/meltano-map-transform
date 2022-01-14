@@ -18,7 +18,7 @@ documentation = "https://github.com/MeltanoLabs/meltano-map-transform#readme"
 
 [tool.poetry.dependencies]
 python = "<3.11,>=3.6.2"
-singer-sdk = {git = "https://gitlab.com/meltano/sdk.git", rev = "257-create-a-stream-map-connector-for-use-in-composable-pipeline"}
+singer-sdk = "0.3.18"
 
 [tool.poetry.dev-dependencies]
 black = {version = "^21.12b0", allow-prereleases = true}
