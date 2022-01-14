@@ -1,0 +1,61 @@
+[tool.poetry]
+name = "meltano-map-transform"
+version = "0.0.1"
+description = "`meltano-map-transform` is a Singer-compatible inline map transformer, built with the Meltano SDK for Singer Taps."
+authors = [
+  "Meltano Team and Contributors",
+]
+keywords = [
+  "ELT",
+  "singer.io",
+  "Inline Transformation",
+]
+license = "Apache 2.0"
+readme = "README.md"
+homepage = "https://github.com/MeltanoLabs/meltano-map-transform"
+repository = "https://github.com/MeltanoLabs/meltano-map-transform"
+documentation = "https://github.com/MeltanoLabs/meltano-map-transform#readme"
+
+[tool.poetry.dependencies]
+python = "<3.11,>=3.6.2"
+singer-sdk = "0.3.18"
+
+[tool.poetry.dev-dependencies]
+black = {version = "^21.12b0", allow-prereleases = true}
+isort = "^5.10.1"
+mypy = ">=0.930"
+pytest = "^6.2.5"
+pyupgrade = "^2.31.0"
+
+# Flake8
+darglint = "^1.8.1"
+flake8 = "^4.0.1"
+flake8-annotations = "^2.7.0"
+flake8-docstrings = "^1.6.0"
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3 # Vertical Hanging Indent
+src_paths = "meltano_map_transform"
+
+[tool.pytest.ini_options]
+addopts = "-vvv"
+
+[tool.mypy]
+python_version = "3.9"
+warn_unused_configs = true
+
+[[tool.mypy.overrides]]
+ignore_missing_imports = true
+module = [
+  "backoff.*",
+  "singer.*", # https://github.com/transferwise/pipelinewise-singer-python/issues/25
+]
+
+[build-system]
+requires = ["poetry-core @ git+https://github.com/python-poetry/poetry-core.git@master"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+# CLI declaration
+meltano-map-transform = "meltano_map_transform.mapper:StreamTransform.cli"
