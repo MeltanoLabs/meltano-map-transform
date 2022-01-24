@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "meltano-map-transform"
-version = "0.0.1"
+version = "0.0.2"
 description = "`meltano-map-transform` is a Singer-compatible inline map transformer, built with the Meltano SDK for Singer Taps."
 authors = [
   "Meltano Team and Contributors",
