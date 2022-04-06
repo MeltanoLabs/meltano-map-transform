@@ -24,7 +24,7 @@ singer-sdk = "0.4.0"
 black = {version = "^22.3", allow-prereleases = true}
 isort = "^5.10.1"
 mypy = ">=0.930"
-pytest = "^6.2.5"
+pytest = "^7.0.1"
 pyupgrade = "^2.31.0"
 
 # Flake8
