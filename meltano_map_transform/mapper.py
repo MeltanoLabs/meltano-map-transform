@@ -117,7 +117,6 @@ class StreamTransform(InlineMapper):
                     version=message_dict.get("version"),
                     time_extracted=utc_now(),
                 )
-                self.logger.info(stream_map.stream_alias)
                 yield record_message
 
     def map_state_message(self, message_dict: dict) -> List[singer.Message]:
