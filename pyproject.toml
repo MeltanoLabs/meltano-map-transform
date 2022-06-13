@@ -25,7 +25,7 @@ black = {version = "^22.3", allow-prereleases = true}
 isort = "^5.10.1"
 mypy = ">=0.930"
 pytest = "^7.0.1"
-pyupgrade = "^2.31.0"
+pyupgrade = "^2.34.0"
 
 # Flake8
 darglint = "^1.8.1"
