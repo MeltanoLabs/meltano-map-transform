@@ -29,7 +29,7 @@ pyupgrade = "^2.37.3"
 
 # Flake8
 darglint = "^1.8.1"
-flake8 = "^5.0.2"
+flake8 = "^5.0.4"
 flake8-annotations = "^2.9.1"
 flake8-docstrings = "^1.6.0"
 
