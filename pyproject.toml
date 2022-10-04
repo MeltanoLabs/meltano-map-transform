@@ -60,3 +60,11 @@ build-backend = "poetry.core.masonry.api"
 [tool.poetry.scripts]
 # CLI declaration
 meltano-map-transform = "meltano_map_transform.mapper:StreamTransform.cli"
+
+[tool.commitizen]
+name = "cz_version_bump"
+version = "0.0.4"
+tag_format = "v$major.$minor.$patch$prerelease"
+version_files = [
+    "pyproject.toml:^version =",
+]
