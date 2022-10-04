@@ -17,3 +17,11 @@ updates:
       - "aaronsteers"
     labels:
       - "dependencies"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    reviewers:
+      - "edgarrmondragon"
+    labels:
+      - "dependencies"
