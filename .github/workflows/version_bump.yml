@@ -54,7 +54,7 @@ jobs:
         commit: "false"
         push: "false"
         changelog: "true"
-        github_token: ${{ secrets.MELTYBOT_GITHUB_AUTH_TOKEN }}
+        github_token: ${{ secrets.GITHUB_TOKEN }}
         extra_requirements: 'git+https://github.com/meltano/commitizen-version-bump@main'
         changelog_increment_filename: _changelog_fragment.md
 
@@ -89,4 +89,3 @@ jobs:
         base: main
         labels: release
         assignees: "${{ github.actor }}"
-        token: ${{ secrets.MELTYBOT_GITHUB_AUTH_TOKEN }}
