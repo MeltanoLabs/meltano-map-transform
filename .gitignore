@@ -1,3 +1,6 @@
+# Meltano outputs
+*.db
+
 # Ignore meltano internal cache and sqlite systemdb
 
 .meltano/
