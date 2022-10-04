@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "meltano-map-transform"
-version = "0.0.4"
+version = "0.0.5"
 description = "`meltano-map-transform` is a Singer-compatible inline map transformer, built with the Meltano SDK for Singer Taps."
 authors = [
   "Meltano Team and Contributors",
@@ -63,7 +63,7 @@ meltano-map-transform = "meltano_map_transform.mapper:StreamTransform.cli"
 
 [tool.commitizen]
 name = "cz_version_bump"
-version = "0.0.4"
+version = "0.0.5"
 tag_format = "v$major.$minor.$patch$prerelease"
 version_files = [
     "pyproject.toml:^version =",
