@@ -1,0 +1,32 @@
+name: Meltano Run
+
+on: [push]
+
+jobs:
+  meltano-run:
+    runs-on: ubuntu-latest
+    container:
+      image: meltano/meltano:latest-python3.9
+    steps:
+    - uses: actions/checkout@v3.0.2
+
+    - name: Check Meltano version
+      run: |
+        meltano --version
+
+    - name: Install Plugins
+      run: |
+        meltano install
+
+    - name: Run
+      run: |
+        meltano run tap-csv hash_email target-sqlite
+
+    - name: Install SQLite CLI
+      run: |
+        apt update
+        apt install sqlite3
+
+    - name: Check output
+      run: |
+        sqlite3 -markdown output/tap_csv.db 'select * from customers limit 20' >> $GITHUB_STEP_SUMMARY

@@ -1,0 +1,47 @@
+version: 1
+default_environment: dev
+send_anonymous_usage_stats: false
+plugins:
+  extractors:
+  - name: tap-csv
+    variant: meltanolabs
+    pip_url: git+https://github.com/MeltanoLabs/tap-csv.git
+  loaders:
+  - name: target-sqlite
+    variant: meltanolabs
+    pip_url: git+https://github.com/MeltanoLabs/target-sqlite.git
+  mappers:
+  - name: meltano-map-transformer
+    pip_url: .
+    executable: meltano-map-transform
+    settings:
+    - name: stream_maps
+      kind: object
+    mappings:
+    - name: hash_email
+      config:
+        stream_maps:
+          customers:
+            email:      # drop the PII field from RECORD and SCHEMA messages
+            email_domain: email.split('@')[-1]
+            email_hash: md5(config['hash_seed'] + email)
+        stream_map_config:
+          hash_seed: 01AWZh7A6DzGm6iJZZ2T
+environments:
+- name: dev
+  config:
+    plugins:
+      extractors:
+      - name: tap-csv
+        config:
+          files:
+          - entity: customers
+            path: fixtures/customers.csv
+            keys: [id]
+      loaders:
+      - name: target-sqlite
+        config:
+          batch_size: 200
+          database: output/$MELTANO_EXTRACTOR_NAMESPACE.db
+
+project_id: 33080f0b-2d0f-4fba-b7f1-727bbf080f91
