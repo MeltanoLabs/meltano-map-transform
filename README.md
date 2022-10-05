@@ -37,4 +37,41 @@ pipx install git+https://github.com/MeltanoLabs/meltano-map-transform.git@v0.0.1
 
 ### Meltano installation instructions
 
-_...coming soon..._
+1. Add this plugin to your Meltano project
+
+   ```console
+   meltano add mapper meltano-map-transformer
+   ```
+
+1. Install the plugin
+
+   ```console
+   meltano install
+   ```
+
+1. Configure the plugin
+
+   ```yaml
+   # meltano.yml
+   plugins:
+     mappers:
+     - name: meltano-map-transformer
+       pip_url: "git+https://github.com/MeltanoLabs/meltano-map-transform.git"
+       executable: meltano-map-transform
+       mappings:
+       - name: hash_email
+         config:
+           stream_maps:
+             customers:
+               email: null # drop the PII field from RECORD and SCHEMA messages
+               email_domain: email.split('@')[-1]
+               email_hash: md5(config['hash_seed'] + email)
+           stream_map_config:
+             hash_seed: 01AWZh7A6DzGm6iJZZ2T
+    ```
+
+1. Use the plugin in your pipelines
+
+   ```console
+   meltano run tap-csv hash_email target-sqlite
+   ```
