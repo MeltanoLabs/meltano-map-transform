@@ -66,6 +66,7 @@ pipx install git+https://github.com/MeltanoLabs/meltano-map-transform.git@v0.0.1
                email: null # drop the PII field from RECORD and SCHEMA messages
                email_domain: email.split('@')[-1]
                email_hash: md5(config['hash_seed'] + email)
+               __else__: null # drop all other fields
            stream_map_config:
              hash_seed: 01AWZh7A6DzGm6iJZZ2T
     ```
