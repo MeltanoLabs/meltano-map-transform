@@ -26,5 +26,6 @@ types:
 #      the scope would be "awesome-feature"
 scopes:
   - deps
+  - deps-dev
   - stream-maps
   - flattening
