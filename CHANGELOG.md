@@ -1,3 +1,6 @@
+For the latest updates, please see the repo [Release Notes](https://github.com/MeltanoLabs/meltano-map-transform/releases).
+
+
 ## v0.0.5 (2022-10-04)
 
 - [#50](https://github.com/MeltanoLabs/meltano-map-transform/pull/50) Fix singer dependencies and limit Singer SDK to `<=0.11.0`.
