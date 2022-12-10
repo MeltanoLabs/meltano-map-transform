@@ -21,7 +21,7 @@ python = "<3.11,>=3.7.1"
 singer-sdk = "0.15.0"
 
 [tool.poetry.dev-dependencies]
-black = {version = "^22.10", allow-prereleases = true}
+black = {version = "^22.12", allow-prereleases = true}
 isort = "^5.10.1"
 mypy = ">=0.930"
 pytest = "^7.2.0"
