@@ -1,15 +1,32 @@
 version: 1
 default_environment: dev
 send_anonymous_usage_stats: false
+project_id: 33080f0b-2d0f-4fba-b7f1-727bbf080f91
+
 plugins:
   extractors:
   - name: tap-csv
     variant: meltanolabs
     pip_url: git+https://github.com/MeltanoLabs/tap-csv.git
+  - name: tap-smoke-test
+    namespace: tap_smoke_test
+    pip_url: git+https://github.com/meltano/tap-smoke-test.git
+    executable: tap-smoke-test
+    capabilities:
+    - discover
+    - catalog
+    settings:
+    - name: schema_inference_record_count
+      kind: integer
+    - name: streams
+      kind: array
   loaders:
   - name: target-sqlite
     variant: meltanolabs
     pip_url: git+https://github.com/MeltanoLabs/target-sqlite.git
+    config:
+      batch_size: 200
+      database: output/$MELTANO_EXTRACTOR_NAMESPACE.db
   mappers:
   - name: meltano-map-transformer
     pip_url: .
@@ -29,6 +46,14 @@ plugins:
             __else__: null
         stream_map_config:
           hash_seed: 01AWZh7A6DzGm6iJZZ2T
+    - name: whitelist
+      config:
+        stream_maps:
+          # Whitelist `id` and `description` fields, drop all others
+          animals:
+            id: id
+            description: description
+            __else__: null
 environments:
 - name: dev
   config:
@@ -40,10 +65,9 @@ environments:
           - entity: customers
             path: fixtures/customers.csv
             keys: [id]
-      loaders:
-      - name: target-sqlite
+      - name: tap-smoke-test
         config:
-          batch_size: 200
-          database: output/$MELTANO_EXTRACTOR_NAMESPACE.db
-
-project_id: 33080f0b-2d0f-4fba-b7f1-727bbf080f91
+          schema_inference_record_count: 5
+          streams:
+          - stream_name: animals
+            input_filename: fixtures/animals-data.jsonl
