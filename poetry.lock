@@ -631,7 +631,7 @@ python-versions = ">=2.5, !=3.0.*, !=3.1.*, !=3.2.*"
 
 [[package]]
 name = "singer-sdk"
-version = "0.15.0"
+version = "0.16.0"
 description = "A framework for building Singer taps"
 category = "main"
 optional = false
@@ -772,7 +772,7 @@ testing = ["func-timeout", "jaraco.itertools", "pytest (>=6)", "pytest-black (>=
 [metadata]
 lock-version = "1.1"
 python-versions = "<3.11,>=3.7.1"
-content-hash = "f9c326df8c7adb6bd9d438fa437e2da9694d7baf6240d9ea477a1c5baa405cfb"
+content-hash = "bc5a2050be038576cfb7dc04f36f109f1b4d4fdeefaecfa24524338137f5b682"
 
 [metadata.files]
 appdirs = [
@@ -1307,8 +1307,8 @@ simplejson = [
     {file = "simplejson-3.17.6.tar.gz", hash = "sha256:cf98038d2abf63a1ada5730e91e84c642ba6c225b0198c3684151b1f80c5f8a6"},
 ]
 singer-sdk = [
-    {file = "singer_sdk-0.15.0-py3-none-any.whl", hash = "sha256:837eeae6a08f643fbd1b43920f126c4b52e670db1f9017cf001860a97d9c1fed"},
-    {file = "singer_sdk-0.15.0.tar.gz", hash = "sha256:14d1125a65fa8248433dbdc385084b70bc0690e3d319565e986ff251dcd53815"},
+    {file = "singer_sdk-0.16.0-py3-none-any.whl", hash = "sha256:0b440c318cfb976718c6988a4776d26afa4b475dc8e21b75f7865cba8b037874"},
+    {file = "singer_sdk-0.16.0.tar.gz", hash = "sha256:dbf151cbf07c950b36e1e9df21e9916fe942b1848aefd7900743a14e186e2043"},
 ]
 six = [
     {file = "six-1.16.0-py2.py3-none-any.whl", hash = "sha256:8abb2f1d86890a2dfb989f9a77cfcfd3e47c2a354b01111771326f8aa26e0254"},
