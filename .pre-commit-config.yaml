@@ -1,0 +1,50 @@
+ci:
+  autofix_commit_msg: |
+    [pre-commit.ci] auto fixes from pre-commit.ci hooks
+
+    for more information, see https://pre-commit.ci
+  autofix_prs: true
+  autoupdate_commit_msg: 'chore: pre-commit autoupdate'
+  autoupdate_schedule: weekly
+
+repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0
+  hooks:
+  - id: check-json
+  - id: check-toml
+  - id: check-yaml
+  - id: end-of-file-fixer
+  - id: trailing-whitespace
+
+- repo: https://github.com/psf/black
+  rev: 22.12.0
+  hooks:
+  - id: black
+
+- repo: https://github.com/pre-commit/mirrors-mypy
+  rev: v0.991
+  hooks:
+  - id: mypy
+    additional_dependencies:
+    - types-requests
+
+- repo: https://github.com/pycqa/isort
+  rev: v5.11.3
+  hooks:
+  - id: isort
+
+- repo: https://github.com/pycqa/flake8
+  rev: 6.0.0
+  hooks:
+  - id: flake8
+    additional_dependencies:
+    - darglint
+    - flake8-annotations
+    - flake8-docstrings
+
+- repo: https://github.com/asottile/pyupgrade
+  rev: v3.3.1
+  hooks:
+  - id: pyupgrade
+    args: [--py37-plus]
