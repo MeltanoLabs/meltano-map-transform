@@ -21,17 +21,8 @@ python = "<3.11,>=3.7.1"
 singer-sdk = "0.16.0"
 
 [tool.poetry.dev-dependencies]
-black = {version = "^22.12", allow-prereleases = true}
-isort = "^5.10.1"
 mypy = ">=0.930"
 pytest = "^7.2.0"
-pyupgrade = "^3.3.1"
-
-# Flake8
-darglint = "^1.8.1"
-flake8 = "^5.0.4"
-flake8-annotations = "^2.9.1"
-flake8-docstrings = "^1.6.0"
 
 [tool.isort]
 profile = "black"

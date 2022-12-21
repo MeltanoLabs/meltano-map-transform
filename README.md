@@ -1,5 +1,7 @@
 # `meltano-map-transformer`
 
+[![pre-commit.ci status](https://results.pre-commit.ci/badge/github/MeltanoLabs/meltano-map-transform/main.svg)](https://results.pre-commit.ci/latest/github/MeltanoLabs/meltano-map-transform/main)
+
 A map transformer which implements the [`Stream Maps` capability](https://sdk.meltano.com/en/latest/stream_maps.html) from Meltano's tap and target SDK: https://sdk.meltano.com/
 
 This mapper plugin is fully compliant with the Singer Spec and can be placed in between any Singer tap and target.
