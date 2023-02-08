@@ -38,7 +38,20 @@ class StreamTransform(InlineMapper):
             ),
             required=True,
             description="Stream maps",
-        )
+        ),
+        th.Property(
+            "flattening_enabled",
+            th.BooleanType(),
+            description=(
+                "'True' to enable schema flattening and automatically expand nested "
+                "properties."
+            ),
+        ),
+        th.Property(
+            "flattening_max_depth",
+            th.IntegerType(),
+            description="The max depth to flatten schemas.",
+        ),
     ).to_dict()
 
     def __init__(

@@ -20,6 +20,9 @@ plugins:
       kind: integer
     - name: streams
       kind: array
+  - name: people
+    namespace: people
+    executable: scripts/people.sh
   loaders:
   - name: target-sqlite
     variant: meltanolabs
@@ -54,6 +57,11 @@ plugins:
             id: id
             description: description
             __else__: null
+    - name: flatten
+      config:
+        stream_maps: {}
+        flattening_enabled: true
+        flattening_max_depth: 1
 environments:
 - name: dev
   config:

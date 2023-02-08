@@ -1,0 +1,22 @@
+{
+  "plugin_type": "extractors",
+  "name": "tap-smoke-test",
+  "namespace": "tap_smoke_test",
+  "label": "tap-smoke-test",
+  "pip_url": "git+https://github.com/meltano/tap-smoke-test.git",
+  "executable": "tap-smoke-test",
+  "capabilities": [
+    "discover",
+    "catalog"
+  ],
+  "settings": [
+    {
+      "name": "schema_inference_record_count",
+      "kind": "integer"
+    },
+    {
+      "name": "streams",
+      "kind": "array"
+    }
+  ]
+}
