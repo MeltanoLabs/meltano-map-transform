@@ -53,7 +53,7 @@ plugins:
           animals:
             id: id
             description: description
-            __else__: null
+            __else__: __NULL__
 environments:
 - name: dev
   config:

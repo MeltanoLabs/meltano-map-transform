@@ -26,7 +26,10 @@ class StreamTransform(InlineMapper):
                             "__filter__": {"type": ["string", "null"]},
                             "__source__": {"type": ["string", "null"]},
                             "__alias__": {"type": ["string", "null"]},
-                            "__else__": {"type": ["null"]},
+                            "__else__": {
+                                "type": ["string", "null"],
+                                "enum": [None, "__NULL__"],
+                            },
                             "__key_properties__": {
                                 "type": ["array", "null"],
                                 "items": {"type": "string"},
