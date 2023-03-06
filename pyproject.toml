@@ -22,7 +22,7 @@ singer-sdk = "0.21.0"
 
 [tool.poetry.dev-dependencies]
 mypy = ">=0.930"
-pytest = "^7.2.1"
+pytest = "^7.2.2"
 
 [tool.isort]
 profile = "black"
