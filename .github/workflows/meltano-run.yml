@@ -26,8 +26,9 @@ jobs:
 
     - name: Check Meltano version
       uses: devcontainers/ci@v0.3
-      run: |
-        meltano --version
+      with: 
+        runCmd: |
+          meltano --version
 
     - name: Install Plugins
       run: |
