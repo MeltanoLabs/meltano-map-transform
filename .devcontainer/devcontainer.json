@@ -15,7 +15,8 @@
 		"ghcr.io/devcontainers-contrib/features/mypy:1": {},
 		"ghcr.io/devcontainers-contrib/features/poetry:1": {},
 		"ghcr.io/devcontainers-contrib/features/pre-commit:1": {},
-		"ghcr.io/devcontainers-contrib/features/pylint:1": {}
+		"ghcr.io/devcontainers-contrib/features/pylint:1": {},
+		"ghcr.io/warrenbuckley/codespace-features/sqlite:1": {}
 	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.

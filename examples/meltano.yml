@@ -38,10 +38,26 @@ plugins:
       config:
         stream_maps:
           # Whitelist `id` and `description` fields, drop all others
-          animals:
+          customers:
             id: id
-            description: description
+            description: last_name
             __else__: __NULL__
+            __alias__: customers_v2
+    - name: add_timestamp
+      config:
+        stream_maps:
+          customers:
+            mapping_time: datetime.date.today()
+            __alias__: customers_v3      
+    - name: add_str
+      config:
+        stream_maps:
+          customers:
+            client_id: "\"client_123\""
+            id: int(id)
+            __alias__: customers_v5
+            hash_id: md5(id)      
+            __key_properties__: ["hash_id"]      
 environments:
 - name: dev
   config:
