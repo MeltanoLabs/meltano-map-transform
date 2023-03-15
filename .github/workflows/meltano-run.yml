@@ -25,6 +25,7 @@ jobs:
       uses: devcontainers/ci@v0.3
 
     - name: Check Meltano version
+      uses: devcontainers/ci@v0.3
       run: |
         meltano --version
 
