@@ -8,6 +8,8 @@ plugins:
   - name: tap-csv
     variant: meltanolabs
     pip_url: git+https://github.com/MeltanoLabs/tap-csv.git
+  - name: tap-2-csv
+    inherit_from: tap-csv
   loaders:
   - name: target-sqlite
     variant: meltanolabs
@@ -56,8 +58,32 @@ plugins:
             client_id: "\"client_123\""
             id: int(id)
             __alias__: customers_v5
-            hash_id: md5(id)      
+            hash_id: md5(str(id))      
             __key_properties__: ["hash_id"]      
+    - name: lower
+      config:
+        stream_maps:
+          customers:
+            __alias__: customers_v6
+            first_name: first_name.lower() # three different ways of accessing the variable
+            last_name: record['last_name'].lower()
+            email:  _['email'].upper()
+            count_t: str(last_name.count("t")) # need to cast to str because it could be NULL!
+            ip_address: __NULL__
+    - name: find
+      config:
+        stream_maps:
+          customers:
+            __alias__: customers_v7
+            first_name: "'found_book' if last_name == 'Book' else 'no_book'"
+            id: id
+            __else__: __NULL__
+    - name: slim
+      config:
+        stream_maps:
+          ext_customers:
+            info: ast.literal_eval(info) #["addr"].   info:  {"addr":"bla"}  
+
 environments:
 - name: dev
   config:
@@ -68,4 +94,10 @@ environments:
           files:
           - entity: customers
             path: ../fixtures/customers.csv
+            keys: [id]
+      - name: tap-2-csv
+        config:
+          files:
+          - entity: ext_customers
+            path: ../fixtures/ext_customers.csv
             keys: [id]

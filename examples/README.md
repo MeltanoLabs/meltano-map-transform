@@ -29,4 +29,19 @@ meltano run tap-csv add_str target-sqlite
 
 sqlite3 -markdown output/tap_csv.db 'PRAGMA table_info(customers_v5)'.  <= Works!! nice
 
-However, my "hash_id" is null for some reason ??ß
+## example 5 upper and lower case
+
+
+ meltano run tap-csv lower target-sqlite
+ sqlite3 -markdown output/tap_csv.db 'select * from customers_v6 limit 20'
+
+more string functions: https://thehelloworldprogram.com/python/python-string-methods/
+
+## example 6
+
+meltano run tap-csv find target-sqlite
+sqlite3 -markdown output/tap_csv.db 'select * from customers_v7 limit 20'
+
+## example 7
+meltano run tap-2-csv target-sqlite
+sqlite3 -markdown output/tap_2_csv.db 'select * from ext_customers limit 20'
