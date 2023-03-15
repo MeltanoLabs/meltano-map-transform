@@ -21,13 +21,8 @@ jobs:
     steps:
     - uses: actions/checkout@v3
 
-    - name: Build and run dev container task
-      uses: devcontainers/ci@v0.3
-
     - name: Check Meltano version
-      uses: devcontainers/ci@v0.3
-      with: 
-        runCmd: |
+      run: |
           meltano --version
 
     - name: Install Plugins
