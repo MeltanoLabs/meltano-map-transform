@@ -45,3 +45,6 @@ sqlite3 -markdown output/tap_csv.db 'select * from customers_v7 limit 20'
 ## example 7
 meltano run tap-2-csv target-sqlite
 sqlite3 -markdown output/tap_2_csv.db 'select * from ext_customers limit 20'
+
+
+h
