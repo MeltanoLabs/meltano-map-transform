@@ -5,8 +5,8 @@ on: [push]
 jobs:
   meltano-run:
     runs-on: ubuntu-latest
-    container:
-      image: meltano/meltano:latest-python3.9
+    #container:
+   #   image: meltano/meltano:latest-python3.9
     strategy:
       matrix:
         include:
@@ -20,6 +20,9 @@ jobs:
           target_table: animals
     steps:
     - uses: actions/checkout@v3
+
+    - name: Build and run dev container task
+      uses: devcontainers/ci@v0.3
 
     - name: Check Meltano version
       run: |
