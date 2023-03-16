@@ -17,6 +17,14 @@ plugins:
     config:
       batch_size: 200
       database: output/$MELTANO_EXTRACTOR_NAMESPACE.db
+
+
+
+##################################
+#                                #
+#       Mappers                  #
+#                                #
+##################################
   mappers:
   - name: meltano-map-transformer
     pip_url: ../.
@@ -57,14 +65,14 @@ plugins:
           customers:
             client_id: "\"client_123\""
             id: int(id)
-            __alias__: customers_v5
+            __alias__: customers_v4
             hash_id: md5(str(id))      
             __key_properties__: ["hash_id"]      
     - name: lower
       config:
         stream_maps:
           customers:
-            __alias__: customers_v6
+            __alias__: customers_v5
             first_name: first_name.lower() # three different ways of accessing the variable
             last_name: record['last_name'].lower()
             email:  _['email'].upper()
@@ -74,15 +82,10 @@ plugins:
       config:
         stream_maps:
           customers:
-            __alias__: customers_v7
+            __alias__: customers_v6
             first_name: "'found_book' if last_name == 'Book' else 'no_book'"
             id: id
             __else__: __NULL__
-    - name: slim
-      config:
-        stream_maps:
-          ext_customers:
-            info: ast.literal_eval(info) #["addr"].   info:  {"addr":"bla"}  
 
 environments:
 - name: dev
