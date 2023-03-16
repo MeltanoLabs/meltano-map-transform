@@ -1,6 +1,6 @@
 # Examples for meltano-map-transformer
 
-Either clone this repository, or just open it up in codespaces. 
+Either clone this repository, or just open it up in codespaces.
 
 1. cd to this directory if you haven't
 2. Run ```meltano install```
@@ -9,7 +9,7 @@ Either clone this repository, or just open it up in codespaces.
 
 To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
 
-# Example 1: Hashing with built-in functions 
+# Example 1: Hashing with built-in functions
 **What:** Splitting email adresses, save the domain in separate, hash the mail itself, remove "other" columns and use the "config" object.
 
 **The configuration:**
@@ -69,7 +69,7 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
         stream_maps:
           customers:
             mapping_time: datetime.date.today()
-            __alias__: customers_v3     
+            __alias__: customers_v3
 ```
 **Steps:**
 1. Run ```meltano run tap-csv add_timestamp target-sqlite```
@@ -87,8 +87,8 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
             client_id: "\"client_123\""
             id: int(id)
             __alias__: customers_v4
-            hash_id: md5(str(id))      
-            __key_properties__: ["hash_id"]       
+            hash_id: md5(str(id))
+            __key_properties__: ["hash_id"]
 ```
 
 **Steps:**
@@ -99,7 +99,7 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
 
 
 # Example 5: upper and lower case
-**What:** Use str functions, and reference variables in different ways. 
+**What:** Use str functions, and reference variables in different ways.
 
 **The configuration:**
 ```yaml

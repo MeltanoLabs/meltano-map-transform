@@ -1,6 +1,6 @@
 # `meltano-map-transformer`
 
-<img src="examples/mapperpic.png" width="800px"/> 
+<img src="examples/mapperpic.png" width="800px"/>
 
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/MeltanoLabs/meltano-map-transform/main.svg)](https://results.pre-commit.ci/latest/github/MeltanoLabs/meltano-map-transform/main)
 

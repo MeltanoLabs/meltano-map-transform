@@ -58,7 +58,7 @@ plugins:
         stream_maps:
           customers:
             mapping_time: datetime.date.today()
-            __alias__: customers_v3      
+            __alias__: customers_v3
     - name: add_str
       config:
         stream_maps:
@@ -66,8 +66,8 @@ plugins:
             client_id: "\"client_123\""
             id: int(id)
             __alias__: customers_v4
-            hash_id: md5(str(id))      
-            __key_properties__: ["hash_id"]      
+            hash_id: md5(str(id))
+            __key_properties__: ["hash_id"]
     - name: lower
       config:
         stream_maps:
