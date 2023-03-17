@@ -32,7 +32,7 @@ jobs:
     - name: Run
       run: |
         meltano run ${{ matrix.tap }} ${{ matrix.mapping }} target-sqlite
-  
+
     - name: Install SQLite CLI
       run: |
         apt update
