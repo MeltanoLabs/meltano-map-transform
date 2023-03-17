@@ -24,16 +24,20 @@ jobs:
     - name: Check Meltano version
       run: |
         meltano --version
+
     - name: Install Plugins
       run: |
         meltano install
+
     - name: Run
       run: |
         meltano run ${{ matrix.tap }} ${{ matrix.mapping }} target-sqlite
+  
     - name: Install SQLite CLI
       run: |
         apt update
         apt install sqlite3
+
     - name: Check output
       run: |
         sqlite3 -markdown output/${{ matrix.output_db }} 'select * from ${{ matrix.target_table }} limit 20' >> $GITHUB_STEP_SUMMARY
