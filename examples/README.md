@@ -129,7 +129,7 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
         stream_maps:
           customers:
             __alias__: customers_v6
-            first_name: "'found_book' if last_name == 'Book' else 'no_book'"
+            first_name: "config[last_name] if last_name == 'Book' else 'no_book'"
             id: id
             __else__: __NULL__
 ```
@@ -137,3 +137,33 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
 **Steps:**
 1. Run ```meltano run tap-csv find target-sqlite```
 4. Inspect using  ```sqlite3 -markdown output/tap_csv.db 'select * from customers_v6 limit 20'```
+
+# Example 7: Combine config and custom Python logic
+**What:** Use arbitrary Python statements to manipulate data, and combine them with configs.
+
+**The configuration:**
+```yaml
+    - name: mask
+      config:
+        stream_maps:
+          customers:
+            __alias__: customers_v7
+            last_name: "config[last_name] if last_name in config else 'no-mask-found'"
+            first_name: first_name
+            id: id
+            __else__: __NULL__
+        stream_map_config:
+          Book: mask-1
+          Tire: mask-2
+          Dorian: mask-1
+          Suddock: mask-1
+          Daws: mask-3
+          Maddison: mask-2
+          Biernat: mask-4
+          Wisden: mask-4
+          Loyndon: Mask-2
+```
+
+**Steps:**
+1. Run ```meltano run tap-csv mask target-sqlite```
+4. Inspect using  ```sqlite3 -markdown output/tap_csv.db 'select * from customers_v7 limit 20'```
