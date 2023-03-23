@@ -40,7 +40,7 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
 2. Look at the data ```sqlite3 -markdown output/tap_csv.db 'select * from customers limit 20'```
 
 **Output:**
-| email_domain |  email_hash                   |     id    |      __loaded_at    |           
+| email_domain |  email_hash                   |     id    |      __loaded_at    |
 |------------|  --------------------------------|  ----------|  --------------------------|
 |twitter.com |  a283215a8272692d77dec9138e996c04 | 1         |  2023-03-17 14:19:46.214774|
 
@@ -65,7 +65,7 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
 2. Inspect using  ```sqlite3 -markdown output/tap_csv.db 'select * from customers_v2 limit 20'```
 
 **Output:**
-|description | id   |       __loaded_at  |             
+|description | id   |       __loaded_at  |
 |----------- | ---------- | --------------------------|
 |Book        | 1          | 2023-03-17 14:29:15.257726|
 
