@@ -94,7 +94,7 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
 **Steps:**
 1. Run ```sqlite3 -markdown output/tap_csv.db 'PRAGMA table_info(customers_v3)'``` to check the type of the "id" column from the last example (it should be VARCHAR).
 2. Run ```meltano run tap-csv add_str target-sqlite```
-3. Run ```sqlite3 -markdown output/tap_csv.db 'PRAGMA table_info(customers_v4)'``` to check the type of the "id" column (it should be INT)
+3. Run ```sqlite3 -markdown output/tap_csv.db 'PRAGMA table_info(customers_v4)'``` to check the type of the "id" column (it should be BIGINT)
 4. Inspect using  ```sqlite3 -markdown output/tap_csv.db 'select * from customers_v4 limit 20'```
 
 
