@@ -39,6 +39,11 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
 1. Run ```meltano run tap-csv hash_email target-sqlite```
 2. Look at the data ```sqlite3 -markdown output/tap_csv.db 'select * from customers limit 20'```
 
+**Output:**
+| email_domain |  email_hash                   |     id    |      __loaded_at    |           
+|------------|  --------------------------------|  ----------|  --------------------------|
+|twitter.com |  a283215a8272692d77dec9138e996c04 | 1         |  2023-03-17 14:19:46.214774|
+
 
 # Example 2: dropping columns, aliasing streams
 **What:** Whitelist one column, rename another one, remove everything else, and rename the stream.
@@ -59,6 +64,11 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
 1. Run ```meltano run tap-csv whitelist target-sqlite```
 2. Inspect using  ```sqlite3 -markdown output/tap_csv.db 'select * from customers_v2 limit 20'```
 
+**Output:**
+|description | id   |       __loaded_at  |             
+|----------- | ---------- | --------------------------|
+|Book        | 1          | 2023-03-17 14:29:15.257726|
+
 # Example 3: dropping columns, aliasing streams
 **What:** Use the datetime library (one of the built in libraries) to set a timestamp.
 
@@ -74,6 +84,11 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
 **Steps:**
 1. Run ```meltano run tap-csv add_timestamp target-sqlite```
 2. Inspect using  ```sqlite3 -markdown output/tap_csv.db 'select * from customers_v3 limit 20'```
+
+**Output:**
+|email              | first_name | id       |   ip_address   |  last_name |  mapping_time | __loaded_at               |
+|------------------ | ---------- | ----------  |------------- | ---------- | ------------ | --------------------------|
+|ebook0@twitter.com | Ethe       | 1       |    67.61.243.220 | Book     |   2023-03-17    |2023-03-17 14:31:50.454788|
 
 # Example 4: type casting
 **What:** Add a literal string to a column, type cast one column from str to int, set up a new key property.
@@ -97,6 +112,10 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
 3. Run ```sqlite3 -markdown output/tap_csv.db 'PRAGMA table_info(customers_v4)'``` to check the type of the "id" column (it should be BIGINT)
 4. Inspect using  ```sqlite3 -markdown output/tap_csv.db 'select * from customers_v4 limit 20'```
 
+**Output:**
+|client_id  | email              | first_name  |hash_id                          | id         | ip_address   |  last_name  | __loaded_at               |
+|---------- | ------------------ | ----------  |-------------------------------- | ----------|  ------------- | ---------- | --------------------------|
+|client_123 | ebook0@twitter.com | Ethe       | c4ca4238a0b923820dcc509a6f75849b | 1          | 67.61.243.220 | Book       | 2023-03-17 14:33:28.225243|
 
 # Example 5: upper and lower case
 **What:** Use str functions, and reference variables in different ways.
@@ -119,6 +138,11 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
 1. Run ```meltano run tap-csv lower target-sqlite```
 4. Inspect using  ```sqlite3 -markdown output/tap_csv.db 'select * from customers_v5 limit 20'```
 
+**Output:**
+|count_t     |email              | first_name | id         | last_name  | __loaded_at               |
+|---------- | ------------------ | ---------- | ---------- | ---------- | --------------------------|
+|0          | EBOOK0@TWITTER.COM | ethe       | 1          | book       | 2023-03-17 14:35:01.229091|
+
 # Example 6: Use other python logic
 **What:** Use arbitrary Python statements to manipulate data.
 
@@ -137,6 +161,13 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
 **Steps:**
 1. Run ```meltano run tap-csv find target-sqlite```
 4. Inspect using  ```sqlite3 -markdown output/tap_csv.db 'select * from customers_v6 limit 20'```
+
+**Output:**
+
+|first_name | id          |__loaded_at               |
+|----------  |---------- | --------------------------|
+|found_book | 1          | 2023-03-17 14:35:32.223231|
+|no_book    | 2          | 2023-03-17 14:35:32.223335|
 
 # Example 7: Combine config and custom Python logic
 **What:** Use arbitrary Python statements to manipulate data, and combine them with configs.
@@ -167,3 +198,13 @@ To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
 **Steps:**
 1. Run ```meltano run tap-csv mask target-sqlite```
 4. Inspect using  ```sqlite3 -markdown output/tap_csv.db 'select * from customers_v7 limit 20'```
+
+**Output:**
+|first_name | id         | last_name  | __loaded_at               |
+|---------- | ---------- | ---------- | --------------------------|
+|Ethe       | 1          | mask-1      |2023-03-17 14:35:56.096918|
+|Myranda    | 2          | mask-2     | 2023-03-17 14:35:56.097042|
+|Serge      | 5          | mask-3     | 2023-03-17 14:35:56.097279|
+|Giffy      | 7          | mask-4      |2023-03-17 14:35:56.097433|
+|Vitoria   |  8         |  no-mask-fo | 2023-03-17 14:35:56.097508|
+|Doreen     | 13        |  Mask-2     | 2023-03-17 14:35:56.097884|
