@@ -1,6 +1,6 @@
 # Examples for meltano-map-transformer
 
-Either clone this repository, or just open it up in codespaces.
+Either clone this repository, or just open it up in codespaces. To execute the commands as shown below, either use codespaces or have at least sqlite3 3.33.0.
 
 1. cd to this directory if you haven't
 2. Run ```meltano install```
