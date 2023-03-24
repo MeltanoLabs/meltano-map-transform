@@ -1,7 +1,6 @@
 name: Meltano Run
 
 on: [push]
-     
 jobs:
   meltano-run:
     runs-on: ubuntu-latest
