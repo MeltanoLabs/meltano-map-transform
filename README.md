@@ -12,7 +12,7 @@ This mapper plugin is fully compliant with the Singer Spec and can be placed in 
 
 For a collection of examples, take a look at [examples/README.md](examples/README.md).
 
-Here's one of them:
+Here's one of them!:
 
 1. Add this plugin to your Meltano project
 
