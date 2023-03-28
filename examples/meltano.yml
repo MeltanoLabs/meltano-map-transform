@@ -16,9 +16,6 @@ plugins:
     config:
       batch_size: 200
       database: output/$MELTANO_EXTRACTOR_NAMESPACE.db
-
-
-
 ##################################
 #                                #
 #       Mappers                  #
@@ -40,7 +37,7 @@ plugins:
             email:      # drop the PII field from RECORD and SCHEMA messages
             email_domain: email.split('@')[-1]
             email_hash: md5(config['hash_seed'] + email)
-            __else__: null
+            __else__:
         stream_map_config:
           hash_seed: 01AWZh7A6DzGm6iJZZ2T
     - name: whitelist
@@ -62,11 +59,11 @@ plugins:
       config:
         stream_maps:
           customers:
-            client_id: "\"client_123\""
+            client_id: '"client_123"'
             id: int(id)
             __alias__: customers_v4
             hash_id: md5(str(id))
-            __key_properties__: ["hash_id"]
+            __key_properties__: [hash_id]
     - name: lower
       config:
         stream_maps:
@@ -74,7 +71,7 @@ plugins:
             __alias__: customers_v5
             first_name: first_name.lower() # three different ways of accessing the variable
             last_name: record['last_name'].lower()
-            email:  _['email'].upper()
+            email: _['email'].upper()
             count_t: str(last_name.count("t")) # need to cast to str because it could be NULL!
             ip_address: __NULL__
     - name: find
@@ -90,7 +87,7 @@ plugins:
         stream_maps:
           customers:
             __alias__: customers_v7
-            last_name: "config[last_name] if last_name in config else 'no-mask-found'"
+            last_name: config[last_name] if last_name in config else 'no-mask-found'
             first_name: first_name
             id: id
             __else__: __NULL__
@@ -104,6 +101,15 @@ plugins:
           Biernat: mask-4
           Wisden: mask-4
           Loyndon: Mask-2
+    - name: add-filter-ipv6
+      config:
+        stream_maps:
+          customers_ipv6:
+            #ip_: config['run_id']
+            #env_run_id: os.getenv('RUN_ID') # singer_sdk.helpers._simpleeval.NameNotDefined: 'os' is not defined for expression 'os.getenv('RUN_ID')'
+            __alias__: customers_v8 # meltano run tap-2-csv target-sqlite; sqlite3 -markdown output/tap_2_csv.db 'select * from customers_ipv6'
+            __filter__: _['ipv4'].find(":") #meltano run tap-2-csv add-filter-ipv6 target-sqlite
+            # find . or : in field...
 
 environments:
 - name: dev
@@ -119,6 +125,7 @@ environments:
       - name: tap-2-csv
         config:
           files:
-          - entity: ext_customers
-            path: ../fixtures/ext_customers.csv
+          - entity: customers_ipv6
+            path: ../fixtures/customers_ipv6.csv
             keys: [id]
+project_id: 3bdabee9-d5ce-4108-9cef-0d3a9d2bacbf
