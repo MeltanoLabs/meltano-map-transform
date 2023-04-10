@@ -1036,14 +1036,14 @@ files = [
 
 [[package]]
 name = "singer-sdk"
-version = "0.22.1"
+version = "0.23.0"
 description = "A framework for building Singer taps"
 category = "main"
 optional = false
 python-versions = ">=3.7.1,<3.12"
 files = [
-    {file = "singer_sdk-0.22.1-py3-none-any.whl", hash = "sha256:2ccd7cfad2fe797cb3a8bf656aad54925f4f3a48737905098ff80978a5753083"},
-    {file = "singer_sdk-0.22.1.tar.gz", hash = "sha256:9e99601f03bee66c311ca98ee64afe62996049877dd041312b6431049b842c37"},
+    {file = "singer_sdk-0.23.0-py3-none-any.whl", hash = "sha256:bb032ad9cc3805c9f840e5ca06c6208e5dea472b23ef6d9a324513fb51fc57f9"},
+    {file = "singer_sdk-0.23.0.tar.gz", hash = "sha256:4bb62f23669568ea2f57a288d6c53e109bf945fb9e06c2ece4cb8331586415e3"},
 ]
 
 [package.dependencies]
@@ -1255,4 +1255,4 @@ testing = ["flake8 (<5)", "func-timeout", "jaraco.functools", "jaraco.itertools"
 [metadata]
 lock-version = "2.0"
 python-versions = "<3.12,>=3.7.1"
-content-hash = "ea5f2adac2dd5b4af15b6c1edc19420cea0c10baa32eb0f4d1fdf28140c621f7"
+content-hash = "a762a523d6d709edba9ed97f0acfeeac3e1cef40e8b5d365787d64c90920534a"
