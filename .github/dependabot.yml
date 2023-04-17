@@ -14,7 +14,6 @@ updates:
       timezone: "US/Central"
     reviewers:
       - "edgarrmondragon"
-      - "aaronsteers"
     labels:
       - "dependencies"
   - package-ecosystem: "github-actions"
