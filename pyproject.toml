@@ -21,7 +21,6 @@ python = "<3.12,>=3.7.1"
 singer-sdk = "0.27.0"
 
 [tool.poetry.dev-dependencies]
-mypy = ">=0.930"
 pytest = "^7.3.1"
 
 [tool.isort]
