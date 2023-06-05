@@ -976,20 +976,20 @@ files = [
 
 [[package]]
 name = "singer-sdk"
-version = "0.27.0"
+version = "0.28.0"
 description = "A framework for building Singer taps"
 category = "main"
 optional = false
 python-versions = ">=3.7.1,<3.12"
 files = [
-    {file = "singer_sdk-0.27.0-py3-none-any.whl", hash = "sha256:98a23a197b1fd6f32949629399a452d14aae0167c1379cac1ab348da50dcf433"},
-    {file = "singer_sdk-0.27.0.tar.gz", hash = "sha256:2366bf1c5a54d7b86fe2782c402c1eae99057e813fcd781be64c051db5a4217c"},
+    {file = "singer_sdk-0.28.0-py3-none-any.whl", hash = "sha256:04463f1f429cf1913de5890068b4cac300b25d2b84ca03a974f2414e7dd35ff4"},
+    {file = "singer_sdk-0.28.0.tar.gz", hash = "sha256:3cf50f91f0cb8e8bd1db3baf025ffe889a3f70d83a94f944b2a941ca5c7a7055"},
 ]
 
 [package.dependencies]
 backoff = ">=2.0.0,<3.0"
 click = ">=8.0,<9.0"
-cryptography = ">=3.4.6,<41.0.0"
+cryptography = ">=3.4.6,<42.0.0"
 fs = ">=2.4.16,<3.0.0"
 importlib-metadata = {version = "<5.0.0", markers = "python_version < \"3.8\""}
 importlib-resources = {version = "5.12.0", markers = "python_version < \"3.9\""}
@@ -1162,4 +1162,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = "<3.12,>=3.7.1"
-content-hash = "2ddc517b07aeddcbbba7bfd4e55079138eb1594d495e747d27a3a9edaf4fcd02"
+content-hash = "cccba2132e3d2b7e222a6e790f88143fca81b31f3f57051d3debe25fe6dbc2fc"
