@@ -1,7 +1,5 @@
 [flake8]
-ignore = ANN101,W503
 max-line-length = 88
-max-complexity = 10
 docstring-convention = google
 per-file-ignores =
     tests/*:ANN,DAR

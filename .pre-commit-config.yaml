@@ -18,6 +18,12 @@ repos:
   - id: end-of-file-fixer
   - id: trailing-whitespace
 
+- repo: https://github.com/astral-sh/ruff-pre-commit
+  rev: v0.0.272
+  hooks:
+    - id: ruff
+      args: [--fix, --exit-non-zero-on-fix, --show-fixes]
+
 - repo: https://github.com/psf/black
   rev: 23.3.0
   hooks:
@@ -30,22 +36,9 @@ repos:
     additional_dependencies:
     - types-requests
 
-- repo: https://github.com/pycqa/isort
-  rev: 5.12.0
-  hooks:
-  - id: isort
-
 - repo: https://github.com/pycqa/flake8
   rev: 6.0.0
   hooks:
   - id: flake8
     additional_dependencies:
     - darglint
-    - flake8-annotations
-    - flake8-docstrings
-
-- repo: https://github.com/asottile/pyupgrade
-  rev: v3.7.0
-  hooks:
-  - id: pyupgrade
-    args: [--py37-plus]
