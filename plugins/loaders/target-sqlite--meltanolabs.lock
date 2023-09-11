@@ -4,9 +4,11 @@
   "namespace": "target_sqlite",
   "variant": "meltanolabs",
   "label": "SQLite",
-  "docs": "https://hub.meltano.com/loaders/target-sqlite/meltanolabs",
+  "docs": "https://hub.meltano.com/loaders/target-sqlite--meltanolabs",
   "repo": "https://github.com/MeltanoLabs/target-sqlite",
   "pip_url": "git+https://github.com/MeltanoLabs/target-sqlite.git",
+  "description": "SQLite database loader",
+  "logo_url": "https://hub.meltano.com/assets/logos/loaders/sqlite.png",
   "settings_group_validation": [
     [
       "batch_size"
