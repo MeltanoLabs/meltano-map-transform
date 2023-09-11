@@ -21,7 +21,7 @@ jobs:
           output_db: tap_smoke_test.db
           target_table: animals
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Check Meltano version
       run: |
