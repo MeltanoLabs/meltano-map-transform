@@ -12,7 +12,37 @@ This mapper plugin is fully compliant with the Singer Spec and can be placed in 
 
 For a collection of examples, take a look at [examples/README.md](examples/README.md).
 
-Here's one of them!:
+## Settings
+
+| Setting             | Required | Default | Description |
+|:--------------------|:--------:|:-------:|:------------|
+| stream_maps         | True     | None    | Stream maps |
+| flattening_enabled  | False    | None    | 'True' to enable schema flattening and automatically expand nested properties. |
+| flattening_max_depth| False    | None    | The max depth to flatten schemas. |
+| stream_map_config   | False    | None    | User-defined config values to be used within map expressions. |
+
+A full list of supported settings and capabilities is available by running: `meltano-map-transformer --about`
+
+## Installation
+
+We recommend using GitHub release tags when installing with `pip`. We also recommend using `pipx` or `meltano` instead of installing with `pip` directly.
+
+You can see a full list of published releases [here](https://github.com/MeltanoLabs/meltano-map-transform/releases).
+
+For example:
+
+```
+# Update the below with the latest published release:
+#  https://github.com/MeltanoLabs/meltano-map-transform/releases
+
+# Install with pip, ideally in a new virtual environment to avoid conflicts:
+pip install git+https://github.com/MeltanoLabs/meltano-map-transform.git@v0.4.1
+
+# Or better yet, use `pipx` so that virtual environments are managed automatically:
+pipx install git+https://github.com/MeltanoLabs/meltano-map-transform.git@v0.4.1
+```
+
+### Meltano installation instructions
 
 1. Add this plugin to your Meltano project
 

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "meltano-map-transform"
-version = "0.1.0"
+version = "0.4.1"
 description = "`meltano-map-transform` is a Singer-compatible inline map transformer, built with the Meltano SDK for Singer Taps."
 authors = [
   "Meltano Team and Contributors",
@@ -10,7 +10,7 @@ keywords = [
   "singer.io",
   "Inline Transformation",
 ]
-license = "Apache 2.0"
+license = "Apache-2.0"
 readme = "README.md"
 homepage = "https://github.com/MeltanoLabs/meltano-map-transform"
 repository = "https://github.com/MeltanoLabs/meltano-map-transform"
@@ -18,7 +18,10 @@ documentation = "https://github.com/MeltanoLabs/meltano-map-transform#readme"
 
 [tool.poetry.dependencies]
 python = "<3.12,>=3.7.1"
-singer-sdk = "~=0.31.0"
+
+[tool.poetry.dependencies.singer-sdk]
+allow-prereleases = true
+version = "~=0.32.0b1"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.4.2"

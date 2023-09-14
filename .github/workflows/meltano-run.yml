@@ -20,6 +20,10 @@ jobs:
           mapping: whitelist
           output_db: tap_smoke_test.db
           target_table: animals
+        - tap: people
+          mapping: flatten
+          output_db: people.db
+          target_table: people
     steps:
     - uses: actions/checkout@v4
 

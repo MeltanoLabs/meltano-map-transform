@@ -45,6 +45,19 @@ class StreamTransform(InlineMapper):
             required=True,
             description="Stream maps",
         ),
+        th.Property(
+            "flattening_enabled",
+            th.BooleanType(),
+            description=(
+                "'True' to enable schema flattening and automatically expand nested "
+                "properties."
+            ),
+        ),
+        th.Property(
+            "flattening_max_depth",
+            th.IntegerType(),
+            description="The max depth to flatten schemas.",
+        ),
     ).to_dict()
 
     def __init__(
@@ -93,13 +106,12 @@ class StreamTransform(InlineMapper):
             message_dict.get("key_properties", []),
         )
         for stream_map in self.mapper.stream_maps[stream_id]:
-            schema_message = singer.SchemaMessage(
+            yield singer.SchemaMessage(
                 stream_map.stream_alias,
                 stream_map.transformed_schema,
                 stream_map.transformed_key_properties,
                 message_dict.get("bookmark_keys", []),
             )
-            yield schema_message
 
     def map_record_message(
         self,
@@ -119,13 +131,12 @@ class StreamTransform(InlineMapper):
         for stream_map in self.mapper.stream_maps[stream_id]:
             mapped_record = stream_map.transform(message_dict["record"])
             if mapped_record is not None:
-                record_message = singer.RecordMessage(
+                yield singer.RecordMessage(
                     stream=stream_map.stream_alias,
                     record=mapped_record,
                     version=message_dict.get("version"),
                     time_extracted=utc_now(),
                 )
-                yield record_message
 
     def map_state_message(self, message_dict: dict) -> list[singer.Message]:
         """Do nothing to the message.
