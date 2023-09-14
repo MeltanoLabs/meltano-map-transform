@@ -7,8 +7,6 @@ on:
 jobs:
   meltano-run:
     runs-on: ubuntu-latest
-    container:
-      image: meltano/meltano:latest-python3.9
     strategy:
       matrix:
         include:
@@ -26,6 +24,16 @@ jobs:
           target_table: people
     steps:
     - uses: actions/checkout@v4
+
+    - uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Install Meltano
+      env:
+        PIP_CONSTRAINT: .github/workflows/constraints.txt
+      run: |
+        pipx install meltano
 
     - name: Check Meltano version
       run: |
