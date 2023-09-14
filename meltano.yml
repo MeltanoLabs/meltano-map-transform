@@ -32,7 +32,8 @@ plugins:
       database: output/$MELTANO_EXTRACTOR_NAMESPACE.db
   mappers:
   - name: meltano-map-transformer
-    pip_url: .
+    namespace: meltano_map_transformer
+    pip_url: -e .
     executable: meltano-map-transform
     settings:
     - name: stream_maps
@@ -56,7 +57,7 @@ plugins:
           animals:
             id: id
             description: description
-            __else__: null
+            __else__: __NULL__
     - name: flatten
       config:
         stream_maps: {}

@@ -1,13 +1,16 @@
 """A sample inline mapper app."""
+from __future__ import annotations
 
-from pathlib import PurePath
-from typing import Generator, List, Optional, Union
+from typing import TYPE_CHECKING, Generator
 
 import singer_sdk.typing as th
 from singer_sdk import _singerlib as singer
 from singer_sdk.helpers._util import utc_now
 from singer_sdk.mapper import PluginMapper
 from singer_sdk.mapper_base import InlineMapper
+
+if TYPE_CHECKING:
+    from pathlib import PurePath
 
 
 class StreamTransform(InlineMapper):
@@ -26,15 +29,18 @@ class StreamTransform(InlineMapper):
                             "__filter__": {"type": ["string", "null"]},
                             "__source__": {"type": ["string", "null"]},
                             "__alias__": {"type": ["string", "null"]},
-                            "__else__": {"type": ["null"]},
+                            "__else__": {
+                                "type": ["string", "null"],
+                                "enum": [None, "__NULL__"],
+                            },
                             "__key_properties__": {
                                 "type": ["array", "null"],
                                 "items": {"type": "string"},
                             },
                         },
                         "additionalProperties": {"type": ["string", "null"]},
-                    }
-                )
+                    },
+                ),
             ),
             required=True,
             description="Stream maps",
@@ -56,7 +62,8 @@ class StreamTransform(InlineMapper):
 
     def __init__(
         self,
-        config: Optional[Union[dict, PurePath, str, List[Union[PurePath, str]]]] = None,
+        *,
+        config: dict | PurePath | str | list[PurePath | str] | None = None,
         parse_env_config: bool = False,
         validate_config: bool = True,
     ) -> None:
@@ -99,13 +106,12 @@ class StreamTransform(InlineMapper):
             message_dict.get("key_properties", []),
         )
         for stream_map in self.mapper.stream_maps[stream_id]:
-            schema_message = singer.SchemaMessage(
+            yield singer.SchemaMessage(
                 stream_map.stream_alias,
                 stream_map.transformed_schema,
                 stream_map.transformed_key_properties,
                 message_dict.get("bookmark_keys", []),
             )
-            yield schema_message
 
     def map_record_message(
         self,
@@ -125,15 +131,14 @@ class StreamTransform(InlineMapper):
         for stream_map in self.mapper.stream_maps[stream_id]:
             mapped_record = stream_map.transform(message_dict["record"])
             if mapped_record is not None:
-                record_message = singer.RecordMessage(
+                yield singer.RecordMessage(
                     stream=stream_map.stream_alias,
                     record=mapped_record,
                     version=message_dict.get("version"),
                     time_extracted=utc_now(),
                 )
-                yield record_message
 
-    def map_state_message(self, message_dict: dict) -> List[singer.Message]:
+    def map_state_message(self, message_dict: dict) -> list[singer.Message]:
         """Do nothing to the message.
 
         Args:

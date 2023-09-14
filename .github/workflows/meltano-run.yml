@@ -1,7 +1,9 @@
 name: Meltano Run
 
-on: [push]
-
+on:
+  pull_request: {}
+  push:
+    branches: [main]
 jobs:
   meltano-run:
     runs-on: ubuntu-latest
@@ -23,7 +25,7 @@ jobs:
           output_db: people.db
           target_table: people
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
     - name: Check Meltano version
       run: |
