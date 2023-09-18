@@ -21,7 +21,7 @@ python = "<3.12,>=3.7.1"
 
 [tool.poetry.dependencies.singer-sdk]
 allow-prereleases = true
-version = "~=0.32.0b1"
+version = "~=0.32.0b2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^7.4.2"
