@@ -1,1 +1,1 @@
-meltano==3.0.0
+meltano==3.1.0
