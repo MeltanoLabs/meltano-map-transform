@@ -16,6 +16,17 @@ updates:
       - "edgarrmondragon"
     labels:
       - "dependencies"
+  - package-ecosystem: "pip"
+    directory: "/.github/workflows"
+    schedule:
+      interval: "weekly"
+      time: "13:00"
+      day: "monday"
+      timezone: "US/Central"
+    reviewers:
+      - "edgarrmondragon"
+    labels:
+      - "dependencies"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
