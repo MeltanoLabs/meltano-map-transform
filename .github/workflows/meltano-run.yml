@@ -22,6 +22,10 @@ jobs:
           mapping: flatten
           output_db: people.db
           target_table: people
+        - tap: nested
+          mapping: comprehension
+          output_db: nested.db
+          target_table: users
     steps:
     - uses: actions/checkout@v4
 

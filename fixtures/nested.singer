@@ -1,0 +1,5 @@
+{"type": "SCHEMA", "stream": "users", "schema": {"required": ["id"], "type": "object", "properties": {"id": {"type": "integer"}, "fields": {"type": "array", "items": {"type": "object", "properties": {"key": {"type": "string"}, "value": {"type": "string"}}}}}}, "key_properties": ["id"]}
+{"type": "RECORD", "stream": "users", "record": {"id": 1, "fields": [{"key": "name", "value": "John Doe"}, {"key": "age", "value": "25"}]}}
+{"type": "RECORD", "stream": "users", "record": {"id": 2, "fields": [{"key": "name", "value": "Jane Doe"}, {"key": "age", "value": "30"}]}}
+{"type": "RECORD", "stream": "users", "record": {"id": 3, "fields": [{"key": "name", "value": "John Smith"}, {"key": "age", "value": "40"}]}}
+{"type": "RECORD", "stream": "users", "record": {"id": 4, "fields": [{"key": "name", "value": "Jane Smith"}, {"key": "age", "value": "50"}]}}
