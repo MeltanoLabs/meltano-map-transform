@@ -37,7 +37,7 @@ jobs:
       env:
         PIP_CONSTRAINT: .github/workflows/constraints.txt
       run: |
-        pipx install meltano
+        pipx install meltano --python python3.11
 
     - name: Check Meltano version
       run: |
