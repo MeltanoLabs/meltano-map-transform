@@ -16,6 +16,7 @@ updates:
       - "edgarrmondragon"
     labels:
       - "dependencies"
+    versioning-strategy: increase-if-necessary
   - package-ecosystem: "pip"
     directory: "/.github/workflows"
     schedule:
