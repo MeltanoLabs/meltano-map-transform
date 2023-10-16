@@ -44,8 +44,15 @@ jobs:
         meltano --version
 
     - name: Install Plugins
+      continue-on-error: true
       run: |
         meltano install
+
+    - name: Upload logs
+      uses: actions/upload-artifact@v3
+      with:
+        name: logs
+        path: .meltano/logs
 
     - name: Run
       run: |
