@@ -23,6 +23,9 @@ plugins:
   - name: people
     namespace: people
     executable: scripts/people.sh
+  - name: nested
+    namespace: nested
+    executable: scripts/nested.sh
   loaders:
   - name: target-sqlite
     variant: meltanolabs
@@ -63,6 +66,12 @@ plugins:
         stream_maps: {}
         flattening_enabled: true
         flattening_max_depth: 1
+    - name: comprehension
+      config:
+        stream_maps:
+          users:
+            id: id
+            fields: "[f for f in fields if f['key'] != 'age']"
 environments:
 - name: dev
   config:

@@ -22,6 +22,12 @@ jobs:
           mapping: flatten
           output_db: people.db
           target_table: people
+          install_extractor: false
+        - tap: nested
+          mapping: comprehension
+          output_db: nested.db
+          target_table: users
+          install_extractor: false
     steps:
     - uses: actions/checkout@v4
 
@@ -33,15 +39,24 @@ jobs:
       env:
         PIP_CONSTRAINT: .github/workflows/constraints.txt
       run: |
-        pipx install meltano
+        pipx install meltano --python python3.11
 
     - name: Check Meltano version
       run: |
         meltano --version
 
-    - name: Install Plugins
+    - name: Install Mapper
       run: |
-        meltano install
+        meltano install mapper meltano-map-transformer
+
+    - name: Install Extractor
+      if: matrix.install_extractor != 'false'
+      run: |
+        meltano install extractor ${{ matrix.tap }}
+
+    - name: Install Loader
+      run: |
+        meltano install loader target-sqlite
 
     - name: Run
       run: |
