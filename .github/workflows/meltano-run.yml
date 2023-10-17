@@ -50,7 +50,7 @@ jobs:
         meltano install mapper meltano-map-transformer
 
     - name: Install Extractor
-      if: matrix.install_extractor == 'true'
+      if: matrix.install_extractor != 'false'
       run: |
         meltano install extractor ${{ matrix.tap }}
 
