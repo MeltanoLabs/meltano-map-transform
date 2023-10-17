@@ -10,16 +10,20 @@ jobs:
     strategy:
       matrix:
         include:
-        - job: hash-email
+        - tap: tap-csv
+          mapping: hash_email
           output_db: tap_csv.db
           target_table: customers
-        - job: allowlist
+        - tap: tap-smoke-test
+          mapping: whitelist
           output_db: tap_smoke_test.db
           target_table: animals
-        - job: flatten
+        - tap: people
+          mapping: flatten
           output_db: people.db
           target_table: people
-        - job: comprehension
+        - tap: nested
+          mapping: comprehension
           output_db: nested.db
           target_table: users
     steps:
@@ -42,11 +46,17 @@ jobs:
     - name: Install Plugins
       continue-on-error: true
       run: |
-        meltano install --schedule ${{ matrix.job }}
+        meltano install
+
+    - name: Upload logs
+      uses: actions/upload-artifact@v3
+      with:
+        name: logs
+        path: .meltano/logs
 
     - name: Run
       run: |
-        meltano run ${{ matrix.job }}
+        meltano run ${{ matrix.tap }} ${{ matrix.mapping }} target-sqlite
 
     - name: Check output
       run: |
