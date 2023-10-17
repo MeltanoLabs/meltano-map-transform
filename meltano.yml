@@ -50,23 +50,30 @@ plugins:
             email:      # drop the PII field from RECORD and SCHEMA messages
             email_domain: email.split('@')[-1]
             email_hash: md5(config['hash_seed'] + email)
+            # is_gmail: "'@gmail.com' in email"
+            # is_yahoo: "'@yahoo.' in email"
             __else__: null
+            # __schema__:
+            #   is_gmail:
+            #     type: boolean
+            #   is_yahoo:
+            #     type: boolean
         stream_map_config:
           hash_seed: 01AWZh7A6DzGm6iJZZ2T
-    - name: whitelist
+    - name: allowlist-fields
       config:
         stream_maps:
-          # Whitelist `id` and `description` fields, drop all others
+          # Allow `id` and `description` fields, drop all others
           animals:
             id: id
             description: description
             __else__: __NULL__
-    - name: flatten
+    - name: flatten-fields
       config:
         stream_maps: {}
         flattening_enabled: true
         flattening_max_depth: 1
-    - name: comprehension
+    - name: list-comprehension
       config:
         stream_maps:
           users:
@@ -89,3 +96,25 @@ environments:
           streams:
           - stream_name: animals
             input_filename: fixtures/animals-data.jsonl
+jobs:
+- name: hash-email
+  tasks: [tap-csv, hash_email, target-sqlite]
+- name: allowlist
+  tasks: [tap-smoke-test, allowlist-fields, target-sqlite]
+- name: flatten
+  tasks: [people, flatten-fields, target-sqlite]
+- name: comprehension
+  tasks: [nested, list-comprehension, target-sqlite]
+schedules:
+- name: hash-email
+  job: hash-email
+  interval: "@daily"
+- name: allowlist
+  job: allowlist
+  interval: "@daily"
+- name: flatten
+  job: flatten
+  interval: "@daily"
+- name: comprehension
+  job: comprehension
+  interval: "@daily"
