@@ -40,7 +40,7 @@ plugins:
   mappers:
   - name: meltano-map-transformer
     namespace: meltano_map_transformer
-    pip_url: -e .
+    pip_url: --pre -e .
     executable: meltano-map-transform
     settings:
     - name: stream_maps
