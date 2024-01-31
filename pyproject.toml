@@ -17,11 +17,11 @@ repository = "https://github.com/MeltanoLabs/meltano-map-transform"
 documentation = "https://github.com/MeltanoLabs/meltano-map-transform#readme"
 
 [tool.poetry.dependencies]
-python = ">=3.7.1,<4"
+python = ">=3.8"
 singer-sdk = "~=0.34.0"
 
 [tool.poetry.dev-dependencies]
-pytest = "^7.4.4"
+pytest = ">=7.4.4"
 
 [tool.poetry-dynamic-versioning]
 enable = true
@@ -42,7 +42,7 @@ vcs = "git"
 addopts = "-vvv"
 
 [tool.mypy]
-python_version = "3.9"
+python_version = "3.12"
 warn_unused_configs = true
 
 [[tool.mypy.overrides]]
@@ -55,8 +55,8 @@ module = [
 [build-system]
 build-backend = "poetry_dynamic_versioning.backend"
 requires = [
-  "poetry-core>=1",
-  "poetry-dynamic-versioning<2.0.0,>=1",
+  "poetry-core==1.8.1",
+  "poetry-dynamic-versioning==1.2",
 ]
 
 [tool.poetry.scripts]
@@ -64,6 +64,10 @@ requires = [
 meltano-map-transform = "meltano_map_transform.mapper:StreamTransform.cli"
 
 [tool.ruff]
+src = ["meltano_map_transform"]
+target-version = "py38"
+
+[tool.ruff.lint]
 ignore = [
   "ANN101",  # missing-type-self
   "ANN102",  # missing-type-cls
@@ -71,18 +75,16 @@ ignore = [
   "PD",      # pandas-vet
 ]
 select = ["ALL"]
-src = ["meltano_map_transform"]
-target-version = "py37"
 
-[tool.ruff.isort]
+[tool.ruff.lint.isort]
 known-first-party = ["meltano_map_transform"]
 required-imports = ["from __future__ import annotations"]
 
-[tool.ruff.per-file-ignores]
+[tool.ruff.lint.per-file-ignores]
 "tests/*" = [
   "S101",   # assert
   "ANN201", # missing-return-type-undocumented-public-function
 ]
 
-[tool.ruff.pydocstyle]
+[tool.ruff.lint.pydocstyle]
 convention = "google"
