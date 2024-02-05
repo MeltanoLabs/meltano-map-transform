@@ -6,6 +6,8 @@ ci:
   autofix_prs: true
   autoupdate_commit_msg: 'chore: pre-commit autoupdate'
   autoupdate_schedule: weekly
+  skip:
+  - check-dependabot
 
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
