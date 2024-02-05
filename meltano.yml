@@ -72,6 +72,17 @@ plugins:
           users:
             id: id
             fields: "[f for f in fields if f['key'] != 'age']"
+    - name: fake
+      config:
+        stream_maps:
+          customers:
+            id: id
+            first_name: first_name
+            cc: fake.credit_card_number()  # add a new field with a fake credit card number
+            __else__: __NULL__
+        faker_config:
+          locale: [en_US]
+          seed: 123456
 environments:
 - name: dev
   config:
