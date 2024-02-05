@@ -28,6 +28,11 @@ jobs:
           output_db: nested.db
           target_table: users
           install_extractor: false
+        - tap: tap-csv
+          mapping: fake
+          output_db: tap_csv.db
+          target_table: customers
+          install_extractor: false
     steps:
     - uses: actions/checkout@v4
 
