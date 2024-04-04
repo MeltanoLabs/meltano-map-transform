@@ -47,7 +47,7 @@ jobs:
 
     - name: Install Meltano
       env:
-        PIP_CONSTRAINT: .github/workflows/constraints.txt
+        PIP_CONSTRAINT: ${{ github.workspace }}/.github/workflows/constraints.txt
       run: |
         pipx install --python '${{ steps.setup-python.outputs.python-path }}' meltano
 
