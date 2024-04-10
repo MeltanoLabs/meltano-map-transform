@@ -49,7 +49,7 @@ jobs:
       env:
         PIP_CONSTRAINT: ${{ github.workspace }}/.github/workflows/constraints.txt
       run: |
-        pipx install --pip-args=--pre --python '${{ steps.setup-python.outputs.python-path }}' meltano
+        pipx install --python '${{ steps.setup-python.outputs.python-path }}' meltano
 
     - name: Check Meltano version
       run: |
