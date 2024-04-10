@@ -3,7 +3,7 @@ default_environment: dev
 send_anonymous_usage_stats: false
 project_id: 33080f0b-2d0f-4fba-b7f1-727bbf080f91
 cli:
-  log_level: DEBUG
+  log_level: debug
 
 plugins:
   extractors:
