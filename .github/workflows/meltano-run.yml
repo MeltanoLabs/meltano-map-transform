@@ -4,6 +4,10 @@ on:
   pull_request: {}
   push:
     branches: [main]
+  schedule:
+  # Daily at 12:00 PM UTC
+  - cron: '0 12 * * *'
+
 jobs:
   meltano-run:
     runs-on: ubuntu-latest
