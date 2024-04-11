@@ -7,6 +7,7 @@ on:
   schedule:
   # Daily at 12:00 PM UTC
   - cron: '0 12 * * *'
+  workflow_dispatch:
 
 jobs:
   meltano-run:
