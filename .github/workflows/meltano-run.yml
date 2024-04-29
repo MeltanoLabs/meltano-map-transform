@@ -11,33 +11,50 @@ on:
 
 jobs:
   meltano-run:
+    name: meltano run ${{ matrix.tap }} ${{ matrix.mapping }} target-sqlite
     runs-on: ubuntu-latest
     strategy:
+      fail-fast: false
       matrix:
         include:
         - tap: tap-csv
           mapping: hash_email
           output_db: tap_csv.db
-          target_table: customers
+          query: "select * from customers limit 20"
         - tap: tap-smoke-test
           mapping: whitelist
           output_db: tap_smoke_test.db
-          target_table: animals
+          query: "select * from animals limit 20"
         - tap: people
           mapping: flatten
           output_db: people.db
-          target_table: people
           install_extractor: false
+          query: "select * from people limit 20"
         - tap: nested
           mapping: comprehension
           output_db: nested.db
-          target_table: users
           install_extractor: false
+          query: "select * from users limit 20"
         - tap: tap-csv
           mapping: fake
           output_db: tap_csv.db
-          target_table: customers
           install_extractor: false
+          query: "select * from customers limit 20"
+        - tap: tap-csv--multi
+          mapping: glob
+          output_db: tap_csv__multi.db
+          query: |
+            with
+              cust as (
+                select *, 'CUSTOMER' as type from customers limit 10
+              ),
+              empl as (
+                select *, 'EMPLOYEE' as type from employees limit 10
+              )
+
+            select * from cust
+            union
+            select * from empl
     steps:
     - uses: actions/checkout@v4
 
@@ -79,4 +96,4 @@ jobs:
 
     - name: Check output
       run: |
-        sqlite3 -markdown output/${{ matrix.output_db }} 'select * from ${{ matrix.target_table }} limit 20' >> $GITHUB_STEP_SUMMARY
+        sqlite3 -markdown output/${{ matrix.output_db }} "${{ matrix.query }}" >> $GITHUB_STEP_SUMMARY

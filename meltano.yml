@@ -10,6 +10,8 @@ plugins:
   - name: tap-csv
     variant: meltanolabs
     pip_url: git+https://github.com/MeltanoLabs/tap-csv.git
+  - name: tap-csv--multi
+    inherit_from: tap-csv
   - name: tap-smoke-test
     namespace: tap_smoke_test
     pip_url: git+https://github.com/meltano/tap-smoke-test.git
@@ -85,6 +87,23 @@ plugins:
         faker_config:
           locale: [en_US]
           seed: 123456
+    # Test glob patterns in stream names
+    - name: glob
+      config:
+        stream_maps:
+          "*":
+            id: id
+            first_name: first_name
+            cc: fake.credit_card_number()  # add a new field with a fake credit card number
+            email:     # drop the PII field from RECORD and SCHEMA messages
+            email_domain: email.split('@')[-1]
+            email_hash: md5(config['hash_seed'] + email)
+            __else__: null
+        stream_map_config:
+          hash_seed: 01AWZh7A6DzGm6iJZZ2T
+        faker_config:
+          locale: [en_US]
+          seed: 123456
 environments:
 - name: dev
   config:
@@ -95,6 +114,15 @@ environments:
           files:
           - entity: customers
             path: fixtures/customers.csv
+            keys: [id]
+      - name: tap-csv--multi
+        config:
+          files:
+          - entity: customers
+            path: fixtures/customers.csv
+            keys: [id]
+          - entity: employees
+            path: fixtures/employees.csv
             keys: [id]
       - name: tap-smoke-test
         config:
