@@ -18,7 +18,7 @@ documentation = "https://github.com/MeltanoLabs/meltano-map-transform#readme"
 
 [tool.poetry.dependencies]
 python = ">=3.8"
-singer-sdk = {version = "~=0.36.0", extras = ["faker"]}
+singer-sdk = {version = "~=0.37.0", extras = ["faker"]}
 
 [tool.poetry.dev-dependencies]
 pytest = ">=7.4.4"
