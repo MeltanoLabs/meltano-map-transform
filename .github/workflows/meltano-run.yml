@@ -11,7 +11,7 @@ on:
 
 jobs:
   meltano-run:
-    name: meltano run ${{ matrix.tap }} ${{ matrix.mapping }} target-sqlite
+    name: ${{ matrix.mapping }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
@@ -45,12 +45,19 @@ jobs:
           output_db: tap_csv__multi.db
           query: |
             with
-              cust as (
-                select *, 'CUSTOMER' as type from customers limit 10
-              ),
-              empl as (
-                select *, 'EMPLOYEE' as type from employees limit 10
-              )
+              cust as (select *, 'CUSTOMER' as type from customers limit 10),
+              empl as (select *, 'EMPLOYEE' as type from employees limit 10)
+
+            select * from cust
+            union
+            select * from empl
+        - tap: tap-csv--multi
+          mapping: single_field
+          output_db: tap_csv__multi.db
+          query: |
+            with
+              cust as (select *, 'CUSTOMER' as type from customers limit 10),
+              empl as (select *, 'EMPLOYEE' as type from employees limit 10)
 
             select * from cust
             union

@@ -104,6 +104,14 @@ plugins:
         faker_config:
           locale: [en_US]
           seed: 123456
+    # Load records into a single field, applied to all streams
+    - name: single_field
+      config:
+        stream_maps:
+          "*":
+            id: id
+            data: record  # `record` is a special keyword that refers to the entire record
+            __else__: null
 environments:
 - name: dev
   config:
