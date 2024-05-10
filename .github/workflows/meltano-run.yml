@@ -57,7 +57,7 @@ jobs:
             select * from empl
         - tap: tap-csv--multi
           mapping: single_field
-          output_db: tap_csv__single_field.db
+          output_db: tap_csv__multi.db
           query: |
             with
               cust as (select data, 'CUSTOMER' as type from customers limit 10),
