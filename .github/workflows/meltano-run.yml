@@ -11,7 +11,7 @@ on:
 
 jobs:
   meltano-run:
-    name: meltano run ${{ matrix.tap }} ${{ matrix.mapping }} target-sqlite
+    name: ${{ matrix.mapping }}
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
