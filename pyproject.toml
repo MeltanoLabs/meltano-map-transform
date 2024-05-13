@@ -1,3 +1,10 @@
+[build-system]
+build-backend = "poetry_dynamic_versioning.backend"
+requires = [
+  "poetry-core==1.8.1",
+  "poetry-dynamic-versioning==1.2",
+]
+
 [tool.poetry]
 name = "meltano-map-transform"
 version = "0.0.0"
@@ -18,7 +25,13 @@ documentation = "https://github.com/MeltanoLabs/meltano-map-transform#readme"
 
 [tool.poetry.dependencies]
 python = ">=3.8"
-singer-sdk = {version = "~=0.37.0", extras = ["faker"]}
+singer-sdk = { version = "~=0.37.0", extras = [
+  "faker",
+] }
+
+[tool.poetry.scripts]
+# CLI declaration
+meltano-map-transform = "meltano_map_transform.mapper:StreamTransform.cli"
 
 [tool.poetry.dev-dependencies]
 pytest = ">=7.4.4"
@@ -38,6 +51,40 @@ metadata = true
 style = "pep440"
 vcs = "git"
 
+[tool.ruff]
+src = [
+  "meltano_map_transform",
+]
+target-version = "py38"
+
+[tool.ruff.lint]
+ignore = [
+  "ANN101", # missing-type-self
+  "ANN102", # missing-type-cls
+  "DJ",     # flake8-django
+  "PD",     # pandas-vet
+]
+select = [
+  "ALL",
+]
+
+[tool.ruff.lint.isort]
+known-first-party = [
+  "meltano_map_transform",
+]
+required-imports = [
+  "from __future__ import annotations",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = [
+  "S101",   # assert
+  "ANN201", # missing-return-type-undocumented-public-function
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
 [tool.pytest.ini_options]
 addopts = "-vvv"
 
@@ -49,42 +96,5 @@ warn_unused_configs = true
 ignore_missing_imports = true
 module = [
   "backoff.*",
-  "singer.*", # https://github.com/transferwise/pipelinewise-singer-python/issues/25
+  "singer.*",  # https://github.com/transferwise/pipelinewise-singer-python/issues/25
 ]
-
-[build-system]
-build-backend = "poetry_dynamic_versioning.backend"
-requires = [
-  "poetry-core==1.8.1",
-  "poetry-dynamic-versioning==1.2",
-]
-
-[tool.poetry.scripts]
-# CLI declaration
-meltano-map-transform = "meltano_map_transform.mapper:StreamTransform.cli"
-
-[tool.ruff]
-src = ["meltano_map_transform"]
-target-version = "py38"
-
-[tool.ruff.lint]
-ignore = [
-  "ANN101",  # missing-type-self
-  "ANN102",  # missing-type-cls
-  "DJ",      # flake8-django
-  "PD",      # pandas-vet
-]
-select = ["ALL"]
-
-[tool.ruff.lint.isort]
-known-first-party = ["meltano_map_transform"]
-required-imports = ["from __future__ import annotations"]
-
-[tool.ruff.lint.per-file-ignores]
-"tests/*" = [
-  "S101",   # assert
-  "ANN201", # missing-return-type-undocumented-public-function
-]
-
-[tool.ruff.lint.pydocstyle]
-convention = "google"
