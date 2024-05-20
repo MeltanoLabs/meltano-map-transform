@@ -52,38 +52,31 @@ style = "pep440"
 vcs = "git"
 
 [tool.ruff]
+target-version = "py38"
+
 src = [
   "meltano_map_transform",
 ]
-target-version = "py38"
-
-[tool.ruff.lint]
-ignore = [
+lint.select = [
+  "ALL",
+]
+lint.per-file-ignores."tests/*" = [
+  "ANN201", # missing-return-type-undocumented-public-function
+  "S101",   # assert
+]
+lint.isort.known-first-party = [
+  "meltano_map_transform",
+]
+lint.isort.required-imports = [
+  "from __future__ import annotations",
+]
+lint.pydocstyle.convention = "google"
+lint.ignore = [
   "ANN101", # missing-type-self
   "ANN102", # missing-type-cls
   "DJ",     # flake8-django
   "PD",     # pandas-vet
 ]
-select = [
-  "ALL",
-]
-
-[tool.ruff.lint.isort]
-known-first-party = [
-  "meltano_map_transform",
-]
-required-imports = [
-  "from __future__ import annotations",
-]
-
-[tool.ruff.lint.per-file-ignores]
-"tests/*" = [
-  "S101",   # assert
-  "ANN201", # missing-return-type-undocumented-public-function
-]
-
-[tool.ruff.lint.pydocstyle]
-convention = "google"
 
 [tool.pytest.ini_options]
 addopts = "-vvv"
