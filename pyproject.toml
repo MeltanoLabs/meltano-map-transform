@@ -60,6 +60,13 @@ src = [
 lint.select = [
   "ALL",
 ]
+lint.ignore = [
+  "ANN101", # missing-type-self
+  "ANN102", # missing-type-cls
+  "DJ",     # flake8-django
+  "PD",     # pandas-vet
+]
+
 lint.per-file-ignores."tests/*" = [
   "ANN201", # missing-return-type-undocumented-public-function
   "S101",   # assert
@@ -71,12 +78,6 @@ lint.isort.required-imports = [
   "from __future__ import annotations",
 ]
 lint.pydocstyle.convention = "google"
-lint.ignore = [
-  "ANN101", # missing-type-self
-  "ANN102", # missing-type-cls
-  "DJ",     # flake8-django
-  "PD",     # pandas-vet
-]
 
 [tool.pytest.ini_options]
 addopts = "-vvv"
