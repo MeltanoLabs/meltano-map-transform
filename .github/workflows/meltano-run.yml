@@ -88,18 +88,9 @@ jobs:
       run: |
         meltano install mapper meltano-map-transformer
 
-    - name: Install Extractor
-      if: matrix.install_extractor != 'false'
-      run: |
-        meltano install extractor ${{ matrix.tap }}
-
-    - name: Install Loader
-      run: |
-        meltano install loader target-sqlite
-
     - name: Run
       run: |
-        meltano run ${{ matrix.tap }} ${{ matrix.mapping }} target-sqlite
+        meltano run --install ${{ matrix.tap }} ${{ matrix.mapping }} target-sqlite
 
     - name: Check output
       run: |
