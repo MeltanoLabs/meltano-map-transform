@@ -84,6 +84,10 @@ jobs:
       run: |
         meltano --version
 
+    - name: Install Mapper
+      run: |
+        meltano install mapper meltano-map-transformer
+
     - name: Run
       run: |
         meltano run --install ${{ matrix.tap }} ${{ matrix.mapping }} target-sqlite
