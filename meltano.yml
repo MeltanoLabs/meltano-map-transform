@@ -65,6 +65,15 @@ plugins:
             id: id
             description: description
             __else__: __NULL__
+    # Put some fields into a JSON object
+    - name: json_field
+      config:
+        stream_maps:
+          # JSON-ify the some fields
+          animals:
+            id: id
+            data: "json.dumps({'description': description, 'verified': verified, 'views': views, 'created_at': created_at})"
+            __else__: null
     - name: flatten
       config:
         stream_maps: {}
