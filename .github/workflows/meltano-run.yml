@@ -25,6 +25,10 @@ jobs:
           mapping: whitelist
           output_db: tap_smoke_test.db
           query: "select * from animals limit 20"
+        - tap: tap-smoke-test
+          mapping: json_field
+          output_db: tap_smoke_test.db
+          query: "select * from animals limit 20"
         - tap: people
           mapping: flatten
           output_db: people.db
