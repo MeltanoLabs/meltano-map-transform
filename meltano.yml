@@ -121,6 +121,13 @@ plugins:
             id: id
             data: record  # `record` is a special keyword that refers to the entire record
             __else__: null
+    # Alias a property across all streams
+    - name: alias_property_all_streams
+      config:
+        stream_maps:
+          "*":
+            name: first_name
+            first_name: __NULL__
 environments:
 - name: dev
   config:

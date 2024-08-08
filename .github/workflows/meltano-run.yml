@@ -66,6 +66,17 @@ jobs:
             select * from cust
             union
             select * from empl
+        - tap: tap-csv--multi
+          mapping: alias_property_all_streams
+          output_db: tap_csv__multi.db
+          query: |
+            with
+              cust as (select *, 'CUSTOMER' as type from customers limit 10),
+              empl as (select *, 'EMPLOYEE' as type from employees limit 10)
+
+            select * from cust
+            union
+            select * from empl
     steps:
     - uses: actions/checkout@v4
 
