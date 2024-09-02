@@ -909,20 +909,20 @@ files = [
 
 [[package]]
 name = "singer-sdk"
-version = "0.39.1"
+version = "0.40.0"
 description = "A framework for building Singer taps"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "singer_sdk-0.39.1-py3-none-any.whl", hash = "sha256:0c66709678d36f584db313f19c64c7d3b443c6879e5e476b2934918581fb213e"},
-    {file = "singer_sdk-0.39.1.tar.gz", hash = "sha256:1616ac22c6917ddf2267a53e8802c10247a5e742bfb284e9dc9632ef9dc50ca4"},
+    {file = "singer_sdk-0.40.0-py3-none-any.whl", hash = "sha256:eb54a1de031a8888adb5ba2d1236161e95b4f87522444c943229a122f4d6b1ee"},
+    {file = "singer_sdk-0.40.0.tar.gz", hash = "sha256:f9360cbfac187cf4f14338b181313cab5726c8d1314c5719f2e8212c375ca3cf"},
 ]
 
 [package.dependencies]
 backoff = {version = ">=2.0.0", markers = "python_version < \"4\""}
 backports-datetime-fromisoformat = {version = ">=2.0.1", markers = "python_version < \"3.11\""}
 click = ">=8.0,<9.0"
-faker = {version = ">=22.5,<27.0", optional = true, markers = "extra == \"faker\""}
+faker = {version = ">=22.5", optional = true, markers = "extra == \"faker\""}
 fs = ">=2.4.16"
 importlib-metadata = {version = "<9.0.0", markers = "python_version < \"3.12\""}
 importlib-resources = {version = ">=5.12.0,<6.2.0 || >6.2.0,<6.3.0 || >6.3.0,<6.3.1 || >6.3.1", markers = "python_version < \"3.10\""}
@@ -943,11 +943,11 @@ urllib3 = ">=1.26,<2"
 
 [package.extras]
 docs = ["furo (>=2024.5.6)", "myst-parser (>=3)", "pytest (>=7.2.1)", "sphinx (>=7)", "sphinx-copybutton (>=0.5.2)", "sphinx-inline-tabs (>=2023.4.21)", "sphinx-notfound-page (>=1.0.0)", "sphinx-reredirects (>=0.1.5)"]
-faker = ["faker (>=22.5,<27.0)"]
+faker = ["faker (>=22.5)"]
 jwt = ["PyJWT (>=2.4,<3.0)", "cryptography (>=3.4.6)"]
-parquet = ["numpy (>=1.22)", "numpy (>=1.22,<1.25)", "pyarrow (>=13)"]
+parquet = ["numpy (>=1.22)", "numpy (>=1.22,<1.25)", "numpy (>=1.22,<2.1)", "pyarrow (>=13)"]
 s3 = ["fs-s3fs (>=1.1.1)"]
-testing = ["pytest (>=7.2.1)", "pytest-durations (>=1.2.0)"]
+testing = ["pytest (>=7.2.1)"]
 
 [[package]]
 name = "six"
@@ -1103,4 +1103,4 @@ test = ["big-O", "importlib-resources", "jaraco.functools", "jaraco.itertools", 
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8"
-content-hash = "544e50deb8051bf4f230169a88ff36476deacaf30472753b1b0b16ff27ff3667"
+content-hash = "01852ecbcd3c6d42e7eedf85f7b09419656e29032be70c177f377b701ca925a7"
