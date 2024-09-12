@@ -45,7 +45,10 @@ plugins:
     settings:
     - name: stream_maps
       kind: object
+    - name: stream_maps.customers.__alias__
+      kind: string
     mappings:
+    - name: uses_env_vars
     - name: hash_email
       config:
         stream_maps:
