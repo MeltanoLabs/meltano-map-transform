@@ -39,6 +39,11 @@ jobs:
           output_db: nested.db
           install_extractor: false
           query: "select * from users limit 20"
+        - tap: variant
+          mapping: drop_large_json_data
+          output_db: variant.db
+          install_extractor: false
+          query: "select * from variant_data limit 20"
         - tap: tap-csv
           mapping: fake
           output_db: tap_csv.db

@@ -30,6 +30,9 @@ plugins:
   - name: nested
     namespace: nested
     executable: scripts/nested.sh
+  - name: variant
+    namespace: variant
+    executable: scripts/variant.sh
   loaders:
   - name: target-sqlite
     variant: meltanolabs
@@ -128,6 +131,11 @@ plugins:
           "*":
             name: first_name
             first_name: __NULL__
+    - name: drop_large_json_data
+      config:
+        stream_maps:
+          "*":
+            data: 'None if len(json.dumps(data, separators=(",", ":")).encode("utf-8")) > 50 else data'
 environments:
 - name: dev
   config:
