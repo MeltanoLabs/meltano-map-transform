@@ -29,7 +29,7 @@ repos:
   - id: check-github-workflows
 
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.6.5
+  rev: v0.6.7
   hooks:
     - id: ruff
       args: [--fix, --exit-non-zero-on-fix, --show-fixes]
@@ -50,6 +50,6 @@ repos:
     - darglint
 
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: "2.2.3"
+  rev: "2.2.4"
   hooks:
   - id: pyproject-fmt
