@@ -83,7 +83,7 @@ jobs:
     - uses: actions/setup-python@v5
       id: setup-python
       with:
-        python-version: 3.12
+        python-version: 3.x
         cache: pip
         cache-dependency-path: |
           meltano.yml
@@ -98,10 +98,6 @@ jobs:
     - name: Check Meltano version
       run: |
         meltano --version
-
-    - name: Install Mapper
-      run: |
-        meltano install mapper meltano-map-transformer
 
     - name: Run
       run: |
