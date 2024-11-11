@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, Generator
+from typing import TYPE_CHECKING
 
 import singer_sdk.typing as th
 from singer_sdk import _singerlib as singer
@@ -11,6 +11,7 @@ from singer_sdk.mapper import PluginMapper
 from singer_sdk.mapper_base import InlineMapper
 
 if TYPE_CHECKING:
+    from collections.abc import Generator
     from pathlib import PurePath
 
 
