@@ -1,0 +1,11 @@
+{"stream": "variant_data", "type": "SCHEMA", "schema": {"required": ["id"], "type": "object", "properties": {"id": {"type": "integer"}, "name": {"type": "string"}, "data": {"type": "object", "properties": {"age": {"type": ["integer", "null"]}}, "additionalProperties": true}}}, "key_properties": ["id"]}
+{"stream": "variant_data", "type": "RECORD", "record": {"id": 1, "name": "Alice", "data": {"age": 25}}}
+{"stream": "variant_data", "type": "RECORD", "record": {"id": 2, "name": "Bob", "data": {"age": 29, "address": {"city": "New York", "zip": "10001"}}}}
+{"stream": "variant_data", "type": "RECORD", "record": {"id": 3, "name": "Charlie", "data": {"items": [1, 2, 3]}}}
+{"stream": "variant_data", "type": "RECORD", "record": {"id": 4, "name": "David", "data": {"age": 31, "job": {"title": "Engineer", "company": "TechCorp", "years": 5}, "skills": ["Python", "C++", "JavaScript"], "hobbies": ["reading", "hiking", "gaming"], "address": {"city": "Los Angeles", "zip": "90001"}, "education": {"degree": "BSc", "field": "Computer Science", "university": "UCLA", "year": 2015}}}}
+{"stream": "variant_data", "type": "RECORD", "record": {"id": 5, "name": "Eve", "data": {"pets": ["dog", "cat"]}}}
+{"stream": "variant_data", "type": "RECORD", "record": {"id": 6, "name": "Frank", "data": {"age": 22, "favorites": {"color": "blue", "food": "pizza", "music": ["rock", "pop"]}}}}
+{"stream": "variant_data", "type": "RECORD", "record": {"id": 7, "name": "Grace", "data": {"order": {"items": [{"product": "Laptop", "price": 999}, {"product": "Headphones", "price": 199}], "total": 1198, "payment": {"method": "credit_card", "status": "paid"}, "shipping": {"address": "123 Elm St", "city": "Austin", "zip": "78701"}, "delivery": {"date": "2024-09-21", "status": "shipped"}}}}}
+{"stream": "variant_data", "type": "RECORD", "record": {"id": 8, "name": "Hank", "data": {"membership": "gold"}}}
+{"stream": "variant_data", "type": "RECORD", "record": {"id": 9, "name": "Ivy", "data": {"status": "active", "projects": [{"title": "Project A", "deadline": "2024-10-01"}, {"title": "Project B", "deadline": "2024-12-15"}], "settings": {"notifications": true, "theme": "dark"}, "membership": {"type": "premium", "renewal": "2025-01-01"}}}}
+{"stream": "variant_data", "type": "RECORD", "record": {"id": 10, "name": "Jack", "data": {"age": 35, "address": {"city": "Chicago", "zip": "60601"}}}}
