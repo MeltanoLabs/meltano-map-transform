@@ -39,9 +39,8 @@ plugins:
       database: output/$MELTANO_EXTRACTOR_NAMESPACE.db
   mappers:
   - name: meltano-map-transformer
-    namespace: meltano_map_transformer
-    pip_url: -e .
-    executable: meltano-map-transform
+    variant: meltano
+    pip_url: git+https://github.com/MeltanoLabs/meltano-map-transform.git
     settings:
     - name: stream_maps
       kind: object
