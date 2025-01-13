@@ -32,7 +32,7 @@ extras = [
   "faker",
 ]
 
-[tool.poetry.dev-dependencies]
+[tool.poetry.group.dev.dependencies]
 pytest = ">=7.4.4"
 
 [tool.poetry.scripts]
