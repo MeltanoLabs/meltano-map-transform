@@ -84,10 +84,6 @@ jobs:
       id: setup-python
       with:
         python-version: 3.x
-        cache: pip
-        cache-dependency-path: |
-          meltano.yml
-          poetry.lock
 
     - uses: astral-sh/setup-uv@v5
       with:
