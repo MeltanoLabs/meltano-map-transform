@@ -5,7 +5,7 @@ ci:
     for more information, see https://pre-commit.ci
   autofix_prs: true
   autoupdate_commit_msg: 'chore: pre-commit autoupdate'
-  autoupdate_schedule: weekly
+  autoupdate_schedule: monthly
   skip:
   - check-dependabot
 
