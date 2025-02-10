@@ -1,4 +1,4 @@
-# `meltano-map-transformer`
+# meltano-map-transformer
 
 <img src="examples/mapperpic.png" width="800px"/>
 
@@ -8,7 +8,7 @@ A map transformer to duplicate, filter, hash, mask and do many more small transf
 
 This mapper plugin is fully compliant with the Singer Spec and can be placed in between any Singer tap and target.
 
-# meltano-map-transformer in action
+## meltano-map-transformer in action
 
 For a collection of examples, take a look at [examples/README.md](examples/README.md).
 
@@ -31,15 +31,12 @@ You can see a full list of published releases [here](https://github.com/MeltanoL
 
 For example:
 
-```
-# Update the below with the latest published release:
-#  https://github.com/MeltanoLabs/meltano-map-transform/releases
+```shell
+# Use `uv` so that virtual environments are managed automatically:
+uv tool install meltano-map-transform==0.10.0
 
-# Install with pip, ideally in a new virtual environment to avoid conflicts:
-pip install git+https://github.com/MeltanoLabs/meltano-map-transform.git@v0.4.1
-
-# Or better yet, use `pipx` so that virtual environments are managed automatically:
-pipx install git+https://github.com/MeltanoLabs/meltano-map-transform.git@v0.4.1
+# Alternatively, use `pipx`:
+pipx install meltano-map-transform==0.10.0
 ```
 
 ### Meltano installation instructions
@@ -63,7 +60,7 @@ pipx install git+https://github.com/MeltanoLabs/meltano-map-transform.git@v0.4.1
    plugins:
      mappers:
      - name: meltano-map-transformer
-       pip_url: "git+https://github.com/MeltanoLabs/meltano-map-transform.git"
+       pip_url: meltano-map-transform
        executable: meltano-map-transform
        mappings:
        - name: hash_email
@@ -84,9 +81,6 @@ pipx install git+https://github.com/MeltanoLabs/meltano-map-transform.git@v0.4.1
    meltano run tap-csv hash_email target-sqlite
    ```
 
-
-
-
 ## Capabilities
 
 * `stream-maps`
@@ -98,22 +92,3 @@ pipx install git+https://github.com/MeltanoLabs/meltano-map-transform.git@v0.4.1
 | stream_maps | True     | None    | Stream maps |
 
 A full list of supported settings and capabilities is available by running: `meltano-map-transformer --about`
-
-## Installation
-
-We recommend using GitHub release tags when installing with `pip`. We also recommend using `pipx` or `meltano` instead of installing with `pip` directly.
-
-You can see a full list of published releases [here](https://github.com/MeltanoLabs/meltano-map-transform/releases).
-
-For example:
-
-```
-# Update the below with the latest published release:
-#  https://github.com/MeltanoLabs/meltano-map-transform/releases
-
-# Install with pip, ideally in a new virtual environment to avoid conflicts:
-pip install git+https://github.com/MeltanoLabs/meltano-map-transform.git@v0.0.1
-
-# Or better yet, use `pipx` so that virtual environments are managed automatically:
-pipx install git+https://github.com/MeltanoLabs/meltano-map-transform.git@v0.0.1
-```
