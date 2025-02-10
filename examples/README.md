@@ -10,7 +10,7 @@ Either clone this repository, or just open it up in codespaces. To execute the c
 To clean up afterwards, just remove the file:  ```rm output/tap_csv.db```
 
 # Example 1: Hashing with built-in functions
-**What:** Splitting email adresses, save the domain in separate, hash the mail itself, remove "other" columns and use the "config" object.
+**What:** Splitting email addresses, save the domain in separate, hash the mail itself, remove "other" columns and use the "config" object.
 
 **The configuration:**
 ```yaml
