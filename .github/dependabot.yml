@@ -12,8 +12,6 @@ updates:
       time: "13:00"
       day: "monday"
       timezone: "US/Central"
-    reviewers:
-      - "edgarrmondragon"
     labels:
       - "dependencies"
     versioning-strategy: increase-if-necessary
@@ -34,8 +32,6 @@ updates:
       time: "13:00"
       day: "monday"
       timezone: "US/Central"
-    reviewers:
-      - "edgarrmondragon"
     labels:
       - "dependencies"
     commit-message:
@@ -48,8 +44,6 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    reviewers:
-      - "edgarrmondragon"
     labels:
       - "dependencies"
     commit-message:
