@@ -1,1 +1,1 @@
-meltano==3.7.7
+meltano==3.7.8
