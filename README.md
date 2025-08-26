@@ -8,6 +8,10 @@ A map transformer to duplicate, filter, hash, mask and do many more small transf
 
 This mapper plugin is fully compliant with the Singer Spec and can be placed in between any Singer tap and target.
 
+## Requirements
+
+- Python 3.10+
+
 ## meltano-map-transformer in action
 
 For a collection of examples, take a look at [examples/README.md](examples/README.md).
