@@ -23,20 +23,20 @@ repos:
   - id: trailing-whitespace
 
 - repo: https://github.com/python-jsonschema/check-jsonschema
-  rev: 0.33.3
+  rev: 0.34.0
   hooks:
   - id: check-dependabot
   - id: check-meltano
   - id: check-github-workflows
 
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.12.11
+  rev: v0.13.3
   hooks:
     - id: ruff
       args: [--fix, --exit-non-zero-on-fix, --show-fixes]
     - id: ruff-format
 
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: "v2.6.0"
+  rev: "v2.7.0"
   hooks:
   - id: pyproject-fmt
