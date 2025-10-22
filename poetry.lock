@@ -27,6 +27,7 @@ description = "Function decoration for backoff and retry"
 optional = false
 python-versions = ">=3.7,<4.0"
 groups = ["main"]
+markers = "python_version < \"4\""
 files = [
     {file = "backoff-2.2.1-py3-none-any.whl", hash = "sha256:63579f9a0628e06278f7e47b7d7d5b6ce20dc65c5e96a6f3ca99a6adca0396e8"},
     {file = "backoff-2.2.1.tar.gz", hash = "sha256:03f829f5bb1923180821643f8753b0502c3b682293992485b0eef2807afa5cba"},
@@ -1071,18 +1072,18 @@ files = [
 
 [[package]]
 name = "singer-sdk"
-version = "0.51.0"
+version = "0.52.1"
 description = "A framework for building Singer taps and targets"
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "singer_sdk-0.51.0-py3-none-any.whl", hash = "sha256:5066f854becb5b899f8d2cadb030871f4e2b36bebff11e78fea06603e203b22a"},
-    {file = "singer_sdk-0.51.0.tar.gz", hash = "sha256:25a3285d26837bfe399b0bb542621752d8e42ab1c395b4fb3ccd3de3d488f71a"},
+    {file = "singer_sdk-0.52.1-py3-none-any.whl", hash = "sha256:294cbb2aac425b57c067dcb6b88c280a21a7447a76fa90e48f7f7fa7d07009b2"},
+    {file = "singer_sdk-0.52.1.tar.gz", hash = "sha256:cf6606f6b10555e8fd5560d5f39a7ba1b53eae3bc41cb4a8c10ab20d382c136c"},
 ]
 
 [package.dependencies]
-backoff = ">=2.0.0,<4"
+backoff = {version = ">=2.2.0", markers = "python_version < \"4\""}
 backports-datetime-fromisoformat = {version = ">=2.0.1", markers = "python_version < \"3.11\""}
 click = ">=8.2,<9"
 faker = {version = ">=22.5", optional = true, markers = "extra == \"faker\""}
@@ -1364,5 +1365,5 @@ type = ["pytest-mypy"]
 
 [metadata]
 lock-version = "2.1"
-python-versions = ">=3.10,<4"
-content-hash = "550c5b04b03d42609aa3c35525f8ead145a87182ce03ee9acd9e81970dc90301"
+python-versions = ">=3.10"
+content-hash = "5dc3a6c425169a1a02c12bd3e13477f919417673d5240ac4d9f6290eaeb7a9fe"
