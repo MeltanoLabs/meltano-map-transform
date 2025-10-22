@@ -24,10 +24,10 @@ repository = "https://github.com/MeltanoLabs/meltano-map-transform"
 documentation = "https://github.com/MeltanoLabs/meltano-map-transform#readme"
 
 [tool.poetry.dependencies]
-python = ">=3.10,<4"
+python = ">=3.10"
 
 [tool.poetry.dependencies.singer-sdk]
-version = "~=0.51.0"
+version = "~=0.52.0"
 extras = [
   "faker",
 ]
