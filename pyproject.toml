@@ -5,60 +5,54 @@ requires = [
   "poetry-dynamic-versioning==1.9.1",
 ]
 
-[tool.poetry]
+[project]
 name = "meltano-map-transform"
-version = "0.0.0"
 description = "Singer-compatible inline map transformer, built with the Meltano SDK for Singer Taps."
-authors = [
-  "Meltano Team and Contributors",
-]
+readme = "README.md"
 keywords = [
   "ELT",
-  "singer.io",
   "Inline Transformation",
+  "singer.io",
 ]
 license = "Apache-2.0"
-readme = "README.md"
-homepage = "https://github.com/MeltanoLabs/meltano-map-transform"
-repository = "https://github.com/MeltanoLabs/meltano-map-transform"
-documentation = "https://github.com/MeltanoLabs/meltano-map-transform#readme"
+license-files = [ "LICENSE" ]
+authors = [ { name = "Meltano Team and Contributors" } ]
+requires-python = ">=3.10"
+classifiers = [
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
+dynamic = [ "version" ]
+dependencies = [
+  "singer-sdk[faker]~=0.52.0",
+]
+urls.Documentation = "https://github.com/MeltanoLabs/meltano-map-transform#readme"
+urls.Homepage = "https://github.com/MeltanoLabs/meltano-map-transform"
+urls.Repository = "https://github.com/MeltanoLabs/meltano-map-transform"
+scripts.meltano-map-transform = "meltano_map_transform.mapper:StreamTransform.cli"
 
-[tool.poetry.dependencies]
-python = ">=3.10"
-
-[tool.poetry.dependencies.singer-sdk]
-version = "~=0.52.0"
-extras = [
-  "faker",
+[dependency-groups]
+dev = [
+  "mypy>=1.17.1",
+  "pytest>=8",
+  "ty>=0.0.1a19",
 ]
 
-[tool.poetry.group.dev.dependencies]
-mypy = ">=1.17.1"
-pytest = ">=8"
-ty = ">=0.0.1a19"
-
-[tool.poetry.scripts]
-# CLI declaration
-meltano-map-transform = "meltano_map_transform.mapper:StreamTransform.cli"
+[tool.poetry]
+requires-poetry = ">=2.2"
+version = "0.0.0"
 
 [tool.poetry-dynamic-versioning]
 enable = true
-format-jinja = """
-    {%- if distance == 0 -%}
-        {{ serialize_pep440(base, stage, revision) }}
-    {%- elif revision is not none -%}
-        {{ serialize_pep440(base, stage, revision + 1, dev=distance, metadata=[commit]) }}
-    {%- else -%}
-        {{ serialize_pep440(bump_version(base), stage, revision, dev=distance, metadata=[commit]) }}
-    {%- endif -%}
-"""
 metadata = true
 style = "pep440"
 vcs = "git"
 
 [tool.ruff]
-target-version = "py310"
-
 src = [
   "meltano_map_transform",
 ]
@@ -69,7 +63,6 @@ lint.ignore = [
   "DJ", # flake8-django
   "PD", # pandas-vet
 ]
-
 lint.per-file-ignores."tests/*" = [
   "ANN201", # missing-return-type-undocumented-public-function
   "S101",   # assert
