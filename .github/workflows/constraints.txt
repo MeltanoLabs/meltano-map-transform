@@ -1,2 +1,2 @@
-meltano==4.0.4
+meltano==4.0.5
 poetry==2.2.1
