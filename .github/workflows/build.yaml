@@ -9,6 +9,7 @@ permissions:
 
 jobs:
   build:
+    name: Build Wheel and SDist
     runs-on: ubuntu-latest
     outputs:
       package_version: ${{ steps.baipp.outputs.package_version }}
@@ -20,6 +21,7 @@ jobs:
         id: baipp
 
   publish:
+    name: Publish to PyPI
     runs-on: ubuntu-latest
     needs: build
     environment:
