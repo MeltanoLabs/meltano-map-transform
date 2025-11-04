@@ -48,6 +48,12 @@ class StreamTransform(InlineMapper):
             description="Stream maps",
         ),
         th.Property(
+            "stream_map_config",
+            th.ObjectType(),
+            title="User Stream Map Configuration",
+            description="User-defined config values to be used within map expressions.",
+        ),
+        th.Property(
             "flattening_enabled",
             th.BooleanType(),
             description=(

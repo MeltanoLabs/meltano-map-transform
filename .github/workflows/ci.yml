@@ -103,6 +103,17 @@ jobs:
             select * from cust
             union
             select * from empl
+        - tap: tap-csv--multi
+          mapping: expand_env_vars
+          output_db: tap_csv__multi.db
+          query: |
+            with
+              cust_with_extra as (select *, 'CUSTOMER' as type from customers limit 10),
+              empl_with_extra as (select *, 'EMPLOYEE' as type from employees limit 10)
+
+            select * from cust_with_extra
+            union
+            select * from empl_with_extra
     steps:
     - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
 
@@ -126,6 +137,9 @@ jobs:
         meltano --version
 
     - name: Run
+      env:
+        MELTANO_RUN_ID: C95FD852-6766-4D11-A484-6CA858AA6939
+        ELT_RUN_STARTED_AT: "2025-01-01T00:00:00Z"
       run: |
         meltano run --install ${{ matrix.tap }} ${{ matrix.mapping }} target-sqlite
 

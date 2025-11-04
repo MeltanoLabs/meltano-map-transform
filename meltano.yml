@@ -46,6 +46,8 @@ plugins:
     settings:
     - name: stream_maps
       kind: object
+    - name: stream_maps_config
+      kind: object
     mappings:
     - name: hash_email
       config:
@@ -129,6 +131,17 @@ plugins:
           "*":
             name: first_name
             first_name: __NULL__
+    # Expand environment variables
+    - name: expand_env_vars
+      config:
+        stream_maps:
+          "*":
+            _extract__run_id: config['_extract__run_id']
+            # _extract__run_id: $MELTANO_RUN_ID
+            _extract__run_started_at: config['_extract__run_started_at']
+        stream_map_config:
+          _extract__run_id: $MELTANO_RUN_ID # tried with {}s, quotes, etc etc etc...
+          _extract__run_started_at: $ELT_RUN_STARTED_AT
 environments:
 - name: dev
   config:
