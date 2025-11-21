@@ -267,14 +267,14 @@ test = ["pytest (>=6)"]
 
 [[package]]
 name = "faker"
-version = "37.12.0"
+version = "38.2.0"
 description = "Faker is a Python package that generates fake data for you."
 optional = false
-python-versions = ">=3.9"
+python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "faker-37.12.0-py3-none-any.whl", hash = "sha256:afe7ccc038da92f2fbae30d8e16d19d91e92e242f8401ce9caf44de892bab4c4"},
-    {file = "faker-37.12.0.tar.gz", hash = "sha256:7505e59a7e02fa9010f06c3e1e92f8250d4cfbb30632296140c2d6dbef09b0fa"},
+    {file = "faker-38.2.0-py3-none-any.whl", hash = "sha256:35fe4a0a79dee0dc4103a6083ee9224941e7d3594811a50e3969e547b0d2ee65"},
+    {file = "faker-38.2.0.tar.gz", hash = "sha256:20672803db9c7cb97f9b56c18c54b915b6f1d8991f63d1d673642dc43f5ce7ab"},
 ]
 
 [package.dependencies]
@@ -1116,7 +1116,6 @@ files = [
 backoff = {version = ">=2.2.0", markers = "python_version < \"4\""}
 backports-datetime-fromisoformat = {version = ">=2.0.1", markers = "python_version < \"3.11\""}
 click = ">=8.2,<9"
-faker = {version = ">=22.5", optional = true, markers = "extra == \"faker\""}
 fsspec = ">=2024.9.0"
 importlib-metadata = {version = ">=6.5", markers = "python_version < \"3.12\""}
 inflection = ">=0.5.1"
@@ -1409,4 +1408,4 @@ type = ["pytest-mypy"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.10"
-content-hash = "5c1940ca987bbc0dfeced1106050103275a5b0fc2e93818c75a035a407fe7c4c"
+content-hash = "63f44857b9d3f323e87e6682b278985d1efa453ca266798b0c7c7e2891bc7e52"
