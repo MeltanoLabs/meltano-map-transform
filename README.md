@@ -29,7 +29,7 @@ A full list of supported settings and capabilities is available by running: `mel
 
 ## Installation
 
-We recommend using GitHub release tags when installing with `pip`. We also recommend using `pipx` or `meltano` instead of installing with `pip` directly.
+We recommend using release tags when installing from GitHub. We also recommend using `uv` or or `meltano` instead of installing with `pip` directly.
 
 You can see a full list of published releases [here](https://github.com/MeltanoLabs/meltano-map-transform/releases).
 
@@ -37,10 +37,10 @@ For example:
 
 ```shell
 # Use `uv` so that virtual environments are managed automatically:
-uv tool install meltano-map-transform==0.10.0
+uv tool install meltano-map-transform
 
 # Alternatively, use `pipx`:
-pipx install meltano-map-transform==0.10.0
+pipx install meltano-map-transform
 ```
 
 ### Meltano installation instructions

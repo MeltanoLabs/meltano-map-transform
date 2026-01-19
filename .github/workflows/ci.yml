@@ -13,8 +13,6 @@ jobs:
   lint:
     name: Lint and Type Check
     runs-on: ubuntu-latest
-    env:
-      UV_PYTHON: ${{ github.workspace }}/.github/workflows/constraints.txt
     steps:
     - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
 
@@ -23,18 +21,14 @@ jobs:
 
     - uses: astral-sh/setup-uv@61cb8a9741eeb8a550a1b8544337180c0fc8476b # v7.2.0
 
-    - name: Install Poetry
-      run: |
-        uv tool install --python '${{ steps.setup-python.outputs.python-path }}' poetry
-
     - name: Install dependencies
       run: |
-        poetry sync --all-extras --all-groups
+        uv sync --all-extras --all-groups
 
     - name: Run tests
       run: |
-        poetry run mypy meltano_map_transform
-        poetry run ty check meltano_map_transform
+        uv run mypy meltano_map_transform
+        uv run ty check meltano_map_transform
 
   meltano-run:
     name: Meltano Run - ${{ matrix.mapping }}

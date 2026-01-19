@@ -13,14 +13,14 @@
 		"ghcr.io/devcontainers-contrib/features/isort:1": {},
 		"ghcr.io/devcontainers-contrib/features/meltano:1": {},
 		"ghcr.io/devcontainers-contrib/features/mypy:1": {},
-		"ghcr.io/devcontainers-contrib/features/poetry:1": {},
+		"ghcr.io/astral-sh/uv/uv:1": {},
 		"ghcr.io/devcontainers-contrib/features/pre-commit:1": {},
 		"ghcr.io/devcontainers-contrib/features/pylint:1": {},
 		"ghcr.io/warrenbuckley/codespace-features/sqlite:1": {}
 	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "poetry install"
+	"postCreateCommand": "uv sync"
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
