@@ -12,15 +12,6 @@ wheels = [
 ]
 
 [[package]]
-name = "backoff"
-version = "2.2.1"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/47/d7/5bbeb12c44d7c4f2fb5b56abce497eb5ed9f34d85701de869acedd602619/backoff-2.2.1.tar.gz", hash = "sha256:03f829f5bb1923180821643f8753b0502c3b682293992485b0eef2807afa5cba", size = 17001, upload-time = "2022-10-05T19:19:32.061Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/df/73/b6e24bd22e6720ca8ee9a85a0c4a2971af8497d8f3193fa05390cbd46e09/backoff-2.2.1-py3-none-any.whl", hash = "sha256:63579f9a0628e06278f7e47b7d7d5b6ce20dc65c5e96a6f3ca99a6adca0396e8", size = 15148, upload-time = "2022-10-05T19:19:30.546Z" },
-]
-
-[[package]]
 name = "backports-datetime-fromisoformat"
 version = "2.0.3"
 source = { registry = "https://pypi.org/simple" }
@@ -433,7 +424,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "faker", specifier = ">=22.5" },
-    { name = "singer-sdk", specifier = "~=0.52.0" },
+    { name = "singer-sdk", specifier = "~=0.53.5" },
 ]
 
 [package.metadata.requires-dev]
@@ -568,6 +559,15 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/d1/db/7ef3487e0fb0049ddb5ce41d3a49c235bf9ad299b6a25d5780a89f19230f/pytest-9.0.2.tar.gz", hash = "sha256:75186651a92bd89611d1d9fc20f0b4345fd827c41ccd5c299a868a05d70edf11", size = 1568901, upload-time = "2025-12-06T21:30:51.014Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/3b/ab/b3226f0bd7cdcf710fbede2b3548584366da3b19b5021e74f5bde2a8fa3f/pytest-9.0.2-py3-none-any.whl", hash = "sha256:711ffd45bf766d5264d487b917733b453d917afd2b0ad65223959f59089f875b", size = 374801, upload-time = "2025-12-06T21:30:49.154Z" },
+]
+
+[[package]]
+name = "python-backoff"
+version = "2.3.1"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/3b/5a/c8a85e7b0019ba54e46756b0b02ead4c054e098dc23c4fdeaa80996a6872/python_backoff-2.3.1.tar.gz", hash = "sha256:54d67283073afa5deb3bb3f8b335952747c5869e7d8f76bf5a87da42bd86c4d6", size = 18715, upload-time = "2025-12-18T21:30:09.845Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/3c/ea/a3adc8d2cda57480cd7020ae6857f57b17ce1720bb6a652bbb0516fa4dff/python_backoff-2.3.1-py3-none-any.whl", hash = "sha256:d3cfcc0938ec78683edc530bbeb5f5c08252477a40270516497d2bb500da392b", size = 15106, upload-time = "2025-12-18T21:30:08.601Z" },
 ]
 
 [[package]]
@@ -866,10 +866,9 @@ wheels = [
 
 [[package]]
 name = "singer-sdk"
-version = "0.52.5"
+version = "0.53.5"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "backoff", marker = "python_full_version < '4'" },
     { name = "backports-datetime-fromisoformat", marker = "python_full_version < '3.11'" },
     { name = "click" },
     { name = "fsspec" },
@@ -879,6 +878,7 @@ dependencies = [
     { name = "jsonpath-ng" },
     { name = "jsonschema" },
     { name = "packaging" },
+    { name = "python-backoff" },
     { name = "python-dotenv" },
     { name = "pyyaml" },
     { name = "referencing" },
@@ -889,9 +889,9 @@ dependencies = [
     { name = "typing-extensions", marker = "python_full_version < '3.13'" },
     { name = "universal-pathlib" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/04/47/7535a2422edca364119f5df4f60071ec970cc9b5de700433002987d0791b/singer_sdk-0.52.5.tar.gz", hash = "sha256:76ee3027663fda37d4370bfdf11db0dd1e69ba9b9931cc3e6e1c0005ccd874e7", size = 1327335, upload-time = "2025-10-30T01:50:18.669Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/3f/95/73f166294a175e9229ce66e05817788ebd4f4e2c19ce84c67421ded7dbe8/singer_sdk-0.53.5.tar.gz", hash = "sha256:da58ced888e2724323ab27a2873bc83072edbf7ee2d8e24542345a0830e32609", size = 1335104, upload-time = "2026-01-06T23:46:37.758Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/87/b7/e384faa53efb150fc6d937d4fb1a82a1e80bc6ad2708e4f228790f20516f/singer_sdk-0.52.5-py3-none-any.whl", hash = "sha256:1919bd509cec29a7a0442303b2cecd007913725ecd108f5b657de17fcb1be972", size = 205104, upload-time = "2025-10-30T01:50:16.662Z" },
+    { url = "https://files.pythonhosted.org/packages/27/34/1d9f702536fa634a728956fd6e3360db672061145be66b4908d3e4484569/singer_sdk-0.53.5-py3-none-any.whl", hash = "sha256:8224fce7ec6b131e2827627f9fcd20fb16b4dc31b17cd1d4f22676e55c62341f", size = 208394, upload-time = "2026-01-06T23:46:36.342Z" },
 ]
 
 [[package]]

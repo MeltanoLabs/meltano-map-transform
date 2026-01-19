@@ -29,7 +29,7 @@ classifiers = [
 dynamic = [ "version" ]
 dependencies = [
   "faker>=22.5",
-  "singer-sdk~=0.52.0",
+  "singer-sdk~=0.53.5",
 ]
 urls.Documentation = "https://github.com/MeltanoLabs/meltano-map-transform#readme"
 urls.Homepage = "https://github.com/MeltanoLabs/meltano-map-transform"
