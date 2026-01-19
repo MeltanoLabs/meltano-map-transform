@@ -1,8 +1,8 @@
 [build-system]
-build-backend = "poetry_dynamic_versioning.backend"
+build-backend = "hatchling.build"
 requires = [
-  "poetry-core==2.2.1",
-  "poetry-dynamic-versioning==1.9.1",
+  "hatch-vcs==0.5",
+  "hatchling==1.28",
 ]
 
 [project]
@@ -43,15 +43,9 @@ dev = [
   "ty>=0.0.1a19",
 ]
 
-[tool.poetry]
-requires-poetry = ">=2.2"
-version = "0.0.0"
-
-[tool.poetry-dynamic-versioning]
-enable = true
-metadata = true
-style = "pep440"
-vcs = "git"
+[tool.hatch.version]
+fallback-version = "0.0.0.dev0"
+source = "vcs"
 
 [tool.ruff]
 src = [

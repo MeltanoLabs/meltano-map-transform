@@ -1,2 +1,1 @@
 meltano==4.0.9
-poetry==2.3.0
