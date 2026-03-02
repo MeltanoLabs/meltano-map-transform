@@ -43,9 +43,9 @@ dev = [
   "ty>=0.0.1a19",
 ]
 
-[tool.hatch.version]
-fallback-version = "0.0.0.dev0"
-source = "vcs"
+[tool.hatch]
+version.fallback-version = "0.0.0.dev0"
+version.source = "vcs"
 
 [tool.ruff]
 src = [
@@ -70,8 +70,8 @@ lint.isort.required-imports = [
 ]
 lint.pydocstyle.convention = "google"
 
-[tool.pytest.ini_options]
-addopts = "-vvv"
+[tool.pytest]
+ini_options.addopts = "-vvv"
 
 [tool.mypy]
 warn_unused_configs = true
