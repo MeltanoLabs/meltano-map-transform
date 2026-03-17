@@ -6,8 +6,6 @@ ci:
   autofix_prs: true
   autoupdate_commit_msg: 'chore: pre-commit autoupdate'
   autoupdate_schedule: monthly
-  skip:
-  - check-dependabot
 
 repos:
 - repo: https://github.com/pre-commit/pre-commit-hooks
@@ -30,13 +28,18 @@ repos:
   - id: check-github-workflows
 
 - repo: https://github.com/astral-sh/ruff-pre-commit
-  rev: v0.15.4
+  rev: v0.15.6
   hooks:
     - id: ruff-check
       args: [--fix, --exit-non-zero-on-fix, --show-fixes]
     - id: ruff-format
 
 - repo: https://github.com/tox-dev/pyproject-fmt
-  rev: v2.16.2
+  rev: v2.19.0
   hooks:
   - id: pyproject-fmt
+
+- repo: https://github.com/hukkin/mdformat
+  rev: 1.0.0
+  hooks:
+  - id: mdformat

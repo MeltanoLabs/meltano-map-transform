@@ -459,9 +459,9 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
-    { name = "mypy", specifier = ">=1.17.1" },
-    { name = "pytest", specifier = ">=8" },
-    { name = "ty", specifier = ">=0.0.1a19" },
+    { name = "mypy", specifier = ">=1.19" },
+    { name = "pytest", specifier = ">=9" },
+    { name = "ty", specifier = ">=0.0.23" },
 ]
 
 [[package]]

@@ -16,7 +16,6 @@ keywords = [
 ]
 license = "Apache-2.0"
 license-files = [ "LICENSE" ]
-authors = [ { name = "Meltano Team and Contributors" } ]
 requires-python = ">=3.10"
 classifiers = [
   "Programming Language :: Python :: 3 :: Only",
@@ -31,47 +30,60 @@ dependencies = [
   "faker>=22.5",
   "singer-sdk~=0.53.5",
 ]
-urls.Documentation = "https://github.com/MeltanoLabs/meltano-map-transform#readme"
-urls.Homepage = "https://github.com/MeltanoLabs/meltano-map-transform"
-urls.Repository = "https://github.com/MeltanoLabs/meltano-map-transform"
-scripts.meltano-map-transform = "meltano_map_transform.mapper:StreamTransform.cli"
+[[project.authors]]
+name = "Meltano Team and Contributors"
+[project.scripts]
+meltano-map-transform = "meltano_map_transform.mapper:StreamTransform.cli"
+[project.urls]
+Documentation = "https://github.com/MeltanoLabs/meltano-map-transform#readme"
+Homepage = "https://github.com/MeltanoLabs/meltano-map-transform"
+Repository = "https://github.com/MeltanoLabs/meltano-map-transform"
 
 [dependency-groups]
 dev = [
-  "mypy>=1.17.1",
-  "pytest>=8",
-  "ty>=0.0.1a19",
+  "mypy>=1.19",
+  "pytest>=9",
+  "ty>=0.0.23",
 ]
 
 [tool.hatch]
-version.fallback-version = "0.0.0.dev0"
-version.source = "vcs"
+[tool.hatch.version]
+fallback-version = "0.0.0.dev0"
+source = "vcs"
+
+[tool.uv]
+required-version = ">=0.10"
 
 [tool.ruff]
-src = [
-  "meltano_map_transform",
-]
-lint.select = [
-  "ALL",
-]
-lint.ignore = [
+required-version = ">=0.15"
+[tool.ruff.lint]
+select = [ "ALL" ]
+ignore = [
   "DJ", # flake8-django
   "PD", # pandas-vet
 ]
-lint.per-file-ignores."tests/*" = [
+per-file-ignores."tests/*" = [
   "ANN201", # missing-return-type-undocumented-public-function
   "S101",   # assert
 ]
-lint.isort.known-first-party = [
-  "meltano_map_transform",
-]
-lint.isort.required-imports = [
-  "from __future__ import annotations",
-]
-lint.pydocstyle.convention = "google"
+isort.known-first-party = [ "meltano_map_transform" ]
+isort.required-imports = [ "from __future__ import annotations" ]
+pydocstyle.convention = "google"
 
-[tool.pytest]
-ini_options.addopts = "-vvv"
+[tool.pyproject-fmt]
+table_format = "long"
 
 [tool.mypy]
+enable_error_code = [
+  "ignore-without-code",
+  "redundant-expr",
+  "truthy-bool",
+]
+strict = true
+warn_unreachable = true
 warn_unused_configs = true
+
+[tool.pytest]
+addopts = [
+  "-vvv",
+]
