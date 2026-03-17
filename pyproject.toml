@@ -52,7 +52,7 @@ fallback-version = "0.0.0.dev0"
 source = "vcs"
 
 [tool.uv]
-required-version = ">=0.10"
+required-version = ">=0.9"
 
 [tool.ruff]
 required-version = ">=0.15"
