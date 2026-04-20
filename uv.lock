@@ -829,11 +829,11 @@ wheels = [
 
 [[package]]
 name = "simpleeval"
-version = "1.0.4"
+version = "1.0.7"
 source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/fd/d6/c25276f8aafd69172852a0f3564cf71b4339bae88d2609ee0843fb1eb6f7/simpleeval-1.0.4.tar.gz", hash = "sha256:32df6dfd5ca09212a7d8b45625b7a2b6aba697ad061a7b0f30938d7d158227fe", size = 37046, upload-time = "2026-03-11T07:40:38.666Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/b4/9d/e7c9309940794dd3073cba2e5101df5874d84243595ce63b1e1c8f9b9c76/simpleeval-1.0.7.tar.gz", hash = "sha256:1e10e5f9fec597814444e20c0892ed15162fa214c8a88f434b5b077cf2fef85b", size = 30250, upload-time = "2026-03-16T10:53:03.464Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/3a/bf/3b1df358e83606ab12fae5861e759ae18084599cfaa9c828b6f8c7cbef03/simpleeval-1.0.4-py3-none-any.whl", hash = "sha256:380318357214f4abb98a0527bd598417707e5416ea13d4b67debf3f67c506c22", size = 17249, upload-time = "2026-03-11T07:40:36.543Z" },
+    { url = "https://files.pythonhosted.org/packages/0f/2f/f32aa85591882378bb43caa09363f3ed97df399369a5144c7f19f2275bc0/simpleeval-1.0.7-py3-none-any.whl", hash = "sha256:97ac271bfd8f2af9e7b9a36ceea67617f26fa873f9d5ae1922f64d4c1442534b", size = 18792, upload-time = "2026-03-16T10:53:02.103Z" },
 ]
 
 [[package]]
@@ -899,7 +899,7 @@ wheels = [
 
 [[package]]
 name = "singer-sdk"
-version = "0.53.6"
+version = "0.53.7"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "backports-datetime-fromisoformat", marker = "python_full_version < '3.11'" },
@@ -922,9 +922,9 @@ dependencies = [
     { name = "typing-extensions", marker = "python_full_version < '3.13'" },
     { name = "universal-pathlib" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/c6/08/69354ba69ce72235e24a8d4e15af7d81a02eb662066d9ef5a3168f81a751/singer_sdk-0.53.6.tar.gz", hash = "sha256:97f1def1bff6ec44321a4a3c635deb082342a26529581fce8a48f7e26c63ee5c", size = 1335128, upload-time = "2026-03-13T14:25:27.858Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/88/dc/42077c99b93b8866094f482e83a708ff0b334c6d336c965038c66eb978e3/singer_sdk-0.53.7.tar.gz", hash = "sha256:4761903bfc7e9daa11bc2a8c5df52af38c3de065291e87c9f875c766b92a74ee", size = 1336031, upload-time = "2026-04-15T21:57:42.434Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/6e/e5/dbbc92ddc3bf1406f436a4e4bc5f965c92efbb81a364d60f70d72b62c94d/singer_sdk-0.53.6-py3-none-any.whl", hash = "sha256:fd6ee45fadec67d42d6aa0a33416c9e850cc90f38f87a37500bb088967f8965c", size = 208399, upload-time = "2026-03-13T14:25:25.532Z" },
+    { url = "https://files.pythonhosted.org/packages/96/ef/08f5367c2ac603eca197ffe3b0da584530c22835c82b6f287ed9d1b1c90d/singer_sdk-0.53.7-py3-none-any.whl", hash = "sha256:0ce05f2900c290d4525f23e9fef79bafa0303610ffea93df81a9eead21e27d46", size = 209246, upload-time = "2026-04-15T21:57:40.866Z" },
 ]
 
 [[package]]
