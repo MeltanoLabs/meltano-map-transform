@@ -19,6 +19,7 @@ class StreamTransform(InlineMapper):
     """A map transformer which implements the Stream Maps capability."""
 
     name = "meltano-map-transformer"
+    package_name = "meltano-map-transform"
 
     config_jsonschema = th.PropertiesList(
         th.Property(
