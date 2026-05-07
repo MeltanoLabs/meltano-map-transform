@@ -68,6 +68,12 @@
       "description": "The max depth to flatten schemas."
     },
     {
+      "name": "flattening_max_key_length",
+      "kind": "integer",
+      "label": "Max Key Length",
+      "description": "The maximum length of a flattened key."
+    },
+    {
       "name": "stream_map_config",
       "kind": "object",
       "label": "User Stream Map Configuration",
@@ -79,5 +85,12 @@
       "label": "Stream Maps",
       "description": "Config object for stream maps capability. For more information check out [Stream Maps](https://sdk.meltano.com/en/latest/stream_maps.html)."
     }
+  ],
+  "supported_python_versions": [
+    "3.10",
+    "3.11",
+    "3.12",
+    "3.13",
+    "3.14"
   ]
 }
