@@ -28,7 +28,7 @@ classifiers = [
 dynamic = [ "version" ]
 dependencies = [
   "faker>=22.5",
-  "singer-sdk~=0.53.5",
+  "singer-sdk>=0.53.5,<0.55",
 ]
 [[project.authors]]
 name = "Meltano Team and Contributors"
