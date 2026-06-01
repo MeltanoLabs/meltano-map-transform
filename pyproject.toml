@@ -74,13 +74,13 @@ pydocstyle.convention = "google"
 table_format = "long"
 
 [tool.mypy]
+warn_unreachable = true
 enable_error_code = [
   "ignore-without-code",
   "redundant-expr",
   "truthy-bool",
 ]
 strict = true
-warn_unreachable = true
 warn_unused_configs = true
 
 [tool.pytest]
