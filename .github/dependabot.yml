@@ -9,9 +9,7 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-      time: "13:00"
       day: "monday"
-      timezone: "US/Central"
     labels:
       - "dependencies"
     versioning-strategy: increase-if-necessary
@@ -28,10 +26,7 @@ updates:
   - package-ecosystem: "pip"
     directory: "/.github/workflows"
     schedule:
-      interval: "weekly"
-      time: "13:00"
-      day: "monday"
-      timezone: "US/Central"
+      interval: "monthly"
     labels:
       - "dependencies"
     commit-message:
@@ -43,7 +38,7 @@ updates:
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
-      interval: "weekly"
+      interval: "monthly"
     labels:
       - "dependencies"
     commit-message:
