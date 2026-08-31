@@ -85,5 +85,25 @@ warn_unused_configs = true
 
 [tool.pytest]
 addopts = [
-  "-vvv",
+  "-v",
 ]
+
+[tool.tox]
+requires = [
+  "tox~=4.61",
+  "tox-uv",
+]
+env_list = [
+  "typing",
+]
+[tool.tox.env.typing]
+description = "run type checking"
+dependency_groups = [ "dev" ]
+commands = [
+  [ "mypy", "meltano_map_transform" ],
+  [ "ty", "check", "meltano_map_transform" ],
+]
+
+[tool.tox.env_run_base]
+runner = "uv-venv-runner"
+description = "run unit tests on Python {py_dot_ver}"
