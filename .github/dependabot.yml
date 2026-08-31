@@ -5,7 +5,7 @@
 
 version: 2
 updates:
-  - package-ecosystem: uv
+  - package-ecosystem: pip
     directory: "/"
     schedule:
       interval: "weekly"
@@ -23,18 +23,6 @@ updates:
         dependency-type: production
         update-types:
           - "patch"
-  - package-ecosystem: "pip"
-    directory: "/.github/workflows"
-    schedule:
-      interval: "monthly"
-    labels:
-      - "dependencies"
-    commit-message:
-      prefix: "ci: "
-    groups:
-      ci:
-        patterns:
-          - "*"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:

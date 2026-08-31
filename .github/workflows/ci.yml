@@ -25,14 +25,9 @@ jobs:
 
     - uses: astral-sh/setup-uv@20cfd1bf945f4377ade1205e4dbc17946fc9a30d # v10.0.1
 
-    - name: Install dependencies
+    - name: Check types
       run: |
-        uv sync --all-extras --all-groups
-
-    - name: Run tests
-      run: |
-        uv run mypy meltano_map_transform
-        uv run ty check meltano_map_transform
+        uvx --with tox-uv tox -e typing
 
   meltano-run:
     name: Meltano Run - ${{ matrix.mapping }}
@@ -125,10 +120,8 @@ jobs:
         version: ">=0.5.0"
 
     - name: Install Meltano
-      env:
-        UV_CONSTRAINT: ${{ github.workspace }}/.github/workflows/constraints.txt
       run: |
-        uv tool install --python '${{ steps.setup-python.outputs.python-path }}' meltano
+        uv tool install --python '${{ steps.setup-python.outputs.python-path }}' --from git+https://github.com/meltano/meltano.git@main meltano
 
     - name: Check Meltano version
       run: |
